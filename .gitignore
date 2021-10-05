@@ -3,3 +3,10 @@ node_modules
 /build
 /.svelte-kit
 /package
+
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
