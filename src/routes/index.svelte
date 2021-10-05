@@ -1,12 +1,17 @@
 <script context="module" lang="ts">
 	export const prerender = true;
+	import Search from '$lib/search-section/Search.svelte';
 </script>
+
 
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
 <section>
+	<div class='search'>
+		<Search />
+	</div>
 
 </section>
 
@@ -17,5 +22,9 @@
 		justify-content: center;
 		align-items: center;
 		flex: 1;
+	}
+
+	.search {
+		margin: 5rem 0 0 0;
 	}
 </style>
