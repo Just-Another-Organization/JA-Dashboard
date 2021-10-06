@@ -5,13 +5,13 @@
 
 <header>
 	<div class='corner pointer'>
-		<img src='./static/settings.png' width='32px' height='auto' alt='setting' id='setting' on:click={ () => sidebar_show = !sidebar_show}>
+		<i class="fas fa-cog setting corner-icon" on:click={ () => sidebar_show = !sidebar_show} ></i>
 	</div>
 	<div>
 		<p id='title'>JA Dashboard</p>
 	</div>
 	<div class='corner pointer'>
-		<img src='./static/github.png' width='32px' height='auto' alt='github'>
+		<i class="fab fa-github corner-icon"></i>
 	</div>
 
 	<Sidebar bind:show={sidebar_show} />
@@ -19,18 +19,19 @@
 
 <style>
 	header {
+		z-index: 100;
 		width: 100%;
-    background: #fafafa;
-		box-shadow: 0 0.75rem 0.8rem rgba(0, 0, 0, 0.15);
+		box-shadow: 0 0.75rem 0.8rem var(--theme-colors-shadow);
 		display: flex;
 		justify-content: space-between;
 		align-content: center;
+		background-color: var(--theme-colors-background);
 	}
 
 	#title {
 		font-size: 1.3rem;
 		font-weight: 300;
-		color: var(--text-color);
+		color: var(--theme-colors-text);
 	}
 
 	.corner {
@@ -39,7 +40,12 @@
 		padding: 0 2rem;
 	}
 
-	#setting:hover {
+	.corner-icon {
+		font-size: 1.7rem;
+    color: var(--theme-colors-text);
+	}
+
+	.setting:hover {
     animation:spin 4s linear infinite;
 	}
 

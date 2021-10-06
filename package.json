@@ -29,7 +29,9 @@
   "type": "module",
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
+    "cookie": "^0.4.1",
+    "svelte-themer": "^0.4.13"
   }
 }

@@ -1,13 +1,20 @@
 <script lang="ts">
+	import { ThemeWrapper } from 'svelte-themer'
+	import {themes} from '../themes'
+	import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css'
+
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
+	import Footer from '$lib/footer/Footer.svelte';
 </script>
 
-<Header />
-
-<main>
-	<slot />
-</main>
+<ThemeWrapper themes={themes}>
+	<Header />
+	<main>
+		<slot />
+	</main>
+	<Footer />
+</ThemeWrapper>
 
 <style>
 	main {

@@ -33,7 +33,7 @@
 		bind:value={searchString}
 		on:keypress={onSearchEnter}
 	>
-	<img src='./static/search.png' alt='s' width='16px' height='auto' class='search-arrow pointer' on:click={onSearchButton}>
+	<i class="fas fa-chevron-right search-arrow pointer" on:click={onSearchButton}></i>
 </section>
 
 
@@ -45,6 +45,8 @@
 		width: 30rem;
     font-family: 'Roboto', sans-serif;
 		font-weight: 300;
+		background-color: var(--theme-colors-background-contrast);
+		color: var(--theme-colors-text);
 	}
 
   .search-box:focus {
@@ -52,6 +54,8 @@
   }
   .search-arrow{
     transition: all .2s ease-in-out;
+		font-size: 1.2rem;
+		color: var(--theme-colors-text);
 	}
 	.search-arrow:hover {
 		transform: scale(1.2);

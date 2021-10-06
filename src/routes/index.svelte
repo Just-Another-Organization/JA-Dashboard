@@ -3,16 +3,14 @@
 	import Search from '$lib/search-section/Search.svelte';
 </script>
 
-
 <svelte:head>
-	<title>Home</title>
+	<title>JADashboard</title>
 </svelte:head>
 
 <section>
 	<div class='search'>
 		<Search />
 	</div>
-
 </section>
 
 <style>

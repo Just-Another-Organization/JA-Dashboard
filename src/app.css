@@ -2,17 +2,20 @@
 
 :root {
 	font-family: 'Roboto', sans-serif;
-	--white: #ffffff;
-	--primary-color: #ff3e00;
-	--secondary-color: #0077ff;
-	--tertiary-color: #268d69;
-	--text-color: #3f3f3f;
+	--theme-colors-text: #313131;
+	--theme-colors-background: #ffffff;
+	--theme-colors-background-contrast: #e3e3e3;
+	--theme-colors-background-accent: #a8a8a8;
+	--theme-colors-shadow: #00000026;
 }
+
+
 
 body {
 	min-height: 100vh;
 	margin: 0;
-  background-color: #ffffff;
+	border: none;
+  background-color: var(--theme-colors-background-contrast);
 }
 
 body::before {

@@ -7,7 +7,7 @@
 	<nav transition:fly={{x: -250, opacity: 1}}>
 		<div class='side-header'>
 			<p class='side-header-text'>Setting</p>
-			<img class='pointer' src='./static/cancel.png' alt='r' width='16px' height='16px' on:click={() => show = !show}>
+			<i class="fas fa-times pointer close-icon" on:click={() => show = !show}></i>
 		</div>
 		<div>
 			<ul class='list'>
@@ -34,8 +34,8 @@
     left: 0;
     height: 100%;
     padding: 2rem 0 0.6rem;
-    border-right: 1px solid #e0e0e0;
-    background: #fff;
+    border-right: 1px solid var(--theme-colors-background);
+    background: var(--theme-colors-background);
     overflow-y: auto;
     width: 18rem;
   }
@@ -49,6 +49,7 @@
 
 	.side-header-text {
     font-weight: 300;
+		color: var(--theme-colors-text);;
 	}
 
 	.list {
@@ -61,11 +62,13 @@
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
+
 	}
 
 	.list-item {
 		width: 100%;
-		background-color: #f1f1f1;
+		background-color: var(--theme-colors-background-contrast);
+    color: var(--theme-colors-text);
 		font-size: 1.2rem;
 		font-weight: 300;
 		padding: 1rem;
@@ -73,7 +76,14 @@
 	}
 
 	.list-item:hover {
-    background-color: #d9d9d9;
+		color: var(--theme-colors-background-contrast);
+    background-color: var(--theme-colors-background-accent);
 		transition: background-color .5s;
 	}
+
+	.close-icon {
+		font-size: 1.6rem;
+		color: var(--theme-colors-text);
+	}
+
 </style>
