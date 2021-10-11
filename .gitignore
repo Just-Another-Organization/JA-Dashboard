@@ -12,3 +12,6 @@ out
 gen
 
 .env
+
+.venv
+/configurator-server/venv/
