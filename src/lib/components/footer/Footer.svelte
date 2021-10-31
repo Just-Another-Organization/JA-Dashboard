@@ -1,5 +1,5 @@
 <script>
-	import MyThemeToggle from '$lib/theme-toggle/MyThemeToggle.svelte';
+	import MyThemeToggle from '$lib/components/theme-toggle/MyThemeToggle.svelte';
 </script>
 
 <footer class="footer">

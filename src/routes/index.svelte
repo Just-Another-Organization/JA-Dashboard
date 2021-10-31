@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	export const prerender = true;
-	import Search from '$lib/search-section/Search.svelte';
-	import Config from '$lib/config-section/Config.svelte';
+	import Search from '$lib/components/search-section/Search.svelte';
 </script>
 
 <svelte:head>
@@ -14,11 +13,6 @@
 	</div>
 </section>
 
-<section>
-	<div class='config'>
-		<Config />
-	</div>
-</section>
 
 <style>
     section {

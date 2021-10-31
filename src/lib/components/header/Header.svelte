@@ -1,11 +1,14 @@
 <script>
-	import Sidebar from '$lib/header/Sidebar.svelte';
-	let sidebar_show = false;
+	import Sidebar from '$lib/components/header/Sidebar.svelte';
+	import {openSidebarAction} from "../../../store/ui.store";
+
+
+
 </script>
 
 <header>
 	<div class='corner pointer'>
-		<i class="fas fa-cog setting corner-icon" on:click={ () => sidebar_show = !sidebar_show} ></i>
+		<i class="fas fa-cog setting corner-icon" on:click={() => openSidebarAction()} ></i>
 	</div>
 	<div>
 		<p id='title'>JA Dashboard</p>
@@ -14,7 +17,7 @@
 		<i class="fab fa-github corner-icon"></i>
 	</div>
 
-	<Sidebar bind:show={sidebar_show} />
+	<Sidebar />
 </header>
 
 <style>

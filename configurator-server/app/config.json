@@ -1,3 +1,4 @@
 {
-  "theme": "dark"
+  "searchProvider": "duckduck",
+  "searchOption": false
 }

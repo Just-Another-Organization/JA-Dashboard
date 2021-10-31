@@ -1,25 +1,13 @@
-import * as config from '../../config.json';
 import type { Config } from '$lib/models/Config';
 
 export default class Configurator {
-	private static instance: Configurator;
-	config: Config;
 
-	//constructor
-	constructor() {
-		if (Configurator.instance) {
-			return Configurator.instance;
-		}
-		this.config = { ...config };
 
-		Configurator.instance = this;
+	async getConfig(): Promise<any>  {
+		// return await fetch('http://localhost:80/get-configuration').then(res => res.json());
 	}
 
-	getTheme(): string {
-		return this.config.theme;
-	}
-
-	setTheme(theme: string): void {
-		this.config.theme = theme;
+	setConfig(conf: Config): void {
+		// this.config.theme = theme;
 	}
 }

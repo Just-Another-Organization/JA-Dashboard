@@ -1,3 +1,4 @@
 export interface Config {
-	theme: string;
+	searchProvider: string;
+	searchOption: boolean;
 }

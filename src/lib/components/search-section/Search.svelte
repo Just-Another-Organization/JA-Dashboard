@@ -1,24 +1,46 @@
 <script lang="ts">
+	import {setting} from "../../../store/store";
+	import {onMount} from "svelte";
 
-	let searchString = '';
-	const queryString = 'https://www.google.com/search?q=';
+	let queryString: string = '';
+	let searchString: string = '';
+
+	let searchOption: boolean = false;
+
+	onMount(() => {
+		setting.subscribe((value) => {
+			searchOption = value.searchOption;
+			switch (value.searchProvider) {
+				case 'google':
+					queryString = 'https://www.google.com/search?q=';
+					break
+				case 'duckduck':
+					queryString = 'https://duckduckgo.com/?q=';
+					break
+			}
+		})
+	})
+
 
 	const onSearchEnter = e => {
 		const searchText:string = queryString + searchString;
-
 		if (e.charCode === 13 && searchString.trim() != '') {
-			console.log(searchText);
-			// SEARCH IN SAME TAB
-			//window.location.replace(search_text)
-			// SEARCH IN NEW TAB
-			//window.open(search_text)
+			search(searchText);
 		}
 	};
 
 	const onSearchButton = () => {
 		const searchText:string = queryString + searchString;
 		if( searchString.trim() != ''){
-			console.log(searchText);
+			search(searchText);
+		}
+	}
+
+	const search = (text: string) => {
+	  if (searchOption){
+			window.location.replace(text)
+		}else {
+			window.open(text)
 		}
 
 	}

@@ -1,18 +1,26 @@
 <script>
 	import { fly } from 'svelte/transition';
-	export let show = false;
+	import {closeSidebarAction, openLookupAction, sidebar} from "../../../store/ui.store";
+
+	let show = false;
+
+	const unsubscribe = sidebar.subscribe(value => {
+		show = value;
+	})
+
+
 </script>
 
 {#if show}
 	<nav transition:fly={{x: -250, opacity: 1}}>
 		<div class='side-header'>
 			<p class='side-header-text'>Setting</p>
-			<i class="fas fa-times pointer close-icon" on:click={() => show = !show}></i>
+			<i class="fas fa-times pointer close-icon" on:click={() => closeSidebarAction()}></i>
 		</div>
 		<div>
 			<ul class='list'>
-				<li class='list-item pointer'>
-					Primo
+				<li class='list-item pointer' on:click={() => {openLookupAction(); closeSidebarAction(); }}>
+					Search Option
 				</li>
 				<li class='list-item pointer'>
 					Secondo
@@ -38,6 +46,7 @@
     background: var(--theme-colors-background);
     overflow-y: auto;
     width: 18rem;
+		z-index: 1000;
   }
 
 	.side-header {

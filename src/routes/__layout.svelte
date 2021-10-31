@@ -2,18 +2,44 @@
 	import { ThemeWrapper } from 'svelte-themer'
 	import {themes} from '../themes'
 	import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css'
-
-	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
-	import Footer from '$lib/footer/Footer.svelte';
+
+	import Header from '$lib/components/header/Header.svelte';
+	import Footer from '$lib/components/footer/Footer.svelte';
+	import SettingLookup from "$lib/components/SettingLookup/SettingLookup.svelte";
+
+	import type {Config} from "$lib/models/Config";
+	import Configurator from '$lib/services/configurator';
+
+	import {setting, } from "../store/store";
+	import {onMount} from "svelte";
+
+
+	const configurator = new Configurator();
+
+
+	async function getConfig(): any {
+		await configurator.getConfig().then((config: Config) => {
+			setting.set( config );
+		})
+	}
+
+	onMount(() => {
+		getConfig();
+	})
+
+
+
 </script>
 
 <ThemeWrapper themes={themes}>
-	<Header />
+	<Header/>
 	<main>
 		<slot />
 	</main>
 	<Footer />
+	<SettingLookup/>
+
 </ThemeWrapper>
 
 <style>
