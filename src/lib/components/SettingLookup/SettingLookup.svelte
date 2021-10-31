@@ -106,7 +106,6 @@
   .lookup-body {
     display: flex;
     flex-direction: column;
-
   }
 
   .setting-select {
@@ -117,13 +116,18 @@
     margin: 0 0 1rem 0;
     font-size: 1.1rem;
     font-weight: 300;
+    border-width: 0 0 1px 0;
+    background-color: #FFFFFF00;
+  }
+
+  .setting-select:focus {
+    outline: none;
   }
 
   .select-header {
     align-self: center;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 1.3rem;
-
   }
 
 </style>
