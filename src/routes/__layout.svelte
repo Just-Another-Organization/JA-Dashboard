@@ -16,14 +16,11 @@
 
 
 	const configurator = new Configurator();
-
-
 	async function getConfig(): any {
 		await configurator.getConfig().then((config: Config) => {
 			setting.set( config );
 		})
 	}
-
 	onMount(() => {
 		getConfig();
 	})

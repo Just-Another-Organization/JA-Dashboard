@@ -1,14 +1,15 @@
 <script lang="ts">
 	import {setting} from "../../../store/store";
-	import {onMount} from "svelte";
+	import {onDestroy, onMount} from "svelte";
+	import type {Config} from "$lib/models/Config";
 
-	let queryString: string = '';
-	let searchString: string = '';
+	let queryString: string;
+	let searchString: string;
 
-	let searchOption: boolean = false;
+	let searchOption: boolean;
 
 	onMount(() => {
-		setting.subscribe((value) => {
+		const unsubscribe = setting.subscribe((value: Config) => {
 			searchOption = value.searchOption;
 			switch (value.searchProvider) {
 				case 'google':
@@ -20,7 +21,6 @@
 			}
 		})
 	})
-
 
 	const onSearchEnter = e => {
 		const searchText:string = queryString + searchString;
@@ -37,9 +37,9 @@
 	}
 
 	const search = (text: string) => {
-	  if (searchOption){
+	  if (searchOption === true){
 			window.location.replace(text)
-		}else {
+		} else if (searchOption === false) {
 			window.open(text)
 		}
 

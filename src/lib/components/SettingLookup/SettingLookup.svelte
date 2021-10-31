@@ -1,25 +1,32 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
   import {closeLookupAction, lookupV} from "../../../store/ui.store";
-  import {onDestroy} from "svelte";
-  // import {setSearchType} from "../../../store/store";
+  import {setSearchProvider, setSearchType, setting} from "../../../store/store";
+  import type {Config} from "$lib/models/Config";
 
 
-  let show = false;
+  let show: boolean = false;
+  let settingValue: Config;
 
-
-
-  const unsubscriber = lookupV.subscribe(value => {
+  lookupV.subscribe(value => {
     show = value;
   })
 
-  let option1: boolean = false;
+  setting.subscribe(value => {
+    settingValue = value;
+  })
 
-  onDestroy( () => unsubscriber())
   
-  const update = (v: string) => {
-    // setSearchType(v)
-    console.log(v)
+  const updateSearchOption = (value: string) => {
+    if (value === 'true'){
+      setSearchType(true)
+    }else {
+      setSearchType(false)
+    }
+  }
+
+  const updateSearchProvider = (value: string) => {
+    setSearchProvider(value)
   }
 
 </script>
@@ -33,21 +40,23 @@
         <i class="fas fa-chevron-down pointer" on:click={() => {closeLookupAction();}}></i>
       </div>
       <div class="lookup-body">
-        <!--<select value={option1} on:change="{(r) => console.log(r.target.value)}">
+        <p class="select-header">Search Provider</p>
+        <select class="setting-select" value={settingValue.searchProvider} on:change="{(r) => updateSearchProvider(r.target.value)}">
           <option value="google">
             Google
           </option>
           <option value="duckduck">
             DuckDuck
           </option>
-        </select>-->
+        </select>
 
-        <select value={option1} on:change="{(r) => update(r.target.value)}">
+        <p class="select-header">Search Mode</p>
+        <select class="setting-select" value={settingValue.searchOption ? 'true' : 'false'} on:change="{(r) => updateSearchOption(r.target.value)}">
           <option value="true">
-            True
+            Apri nella stessa finestra
           </option>
           <option value="false">
-            False
+            Apri in una nuova finestra
           </option>
         </select>
 
@@ -92,6 +101,29 @@
 
   .lookup-header > i {
     font-size: 1.2rem;
+  }
+
+  .lookup-body {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .setting-select {
+    align-self: center;
+    max-width: 30rem;
+    min-width: 20rem;
+    padding: .4rem;
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+
+  .select-header {
+    align-self: center;
+    font-weight: 400;
+    font-size: 1.3rem;
+
   }
 
 </style>
