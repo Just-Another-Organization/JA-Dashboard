@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {setting} from "../../../store/store";
-	import {onDestroy, onMount} from "svelte";
+	import {onMount} from "svelte";
 	import type {Config} from "$lib/models/Config";
 
 	let queryString: string;
@@ -9,7 +9,7 @@
 	let searchOption: boolean;
 
 	onMount(() => {
-		const unsubscribe = setting.subscribe((value: Config) => {
+		setting.subscribe((value: Config) => {
 			searchOption = value.searchOption;
 			switch (value.searchProvider) {
 				case 'google':
@@ -42,7 +42,6 @@
 		} else if (searchOption === false) {
 			window.open(text)
 		}
-
 	}
 
 </script>
@@ -60,7 +59,6 @@
 
 
 <style>
-
 	.search-box {
 		border-width: 0 0 1px 0;
 		font-size: 1.3rem;
@@ -82,5 +80,4 @@
 	.search-arrow:hover {
 		transform: scale(1.2);
 	}
-
 </style>

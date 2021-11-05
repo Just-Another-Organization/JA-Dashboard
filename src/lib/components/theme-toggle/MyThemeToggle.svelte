@@ -3,7 +3,6 @@
 	let { toggle } = getContext('theme')
 </script>
 
-
 <label class="switch">
 	<input type="checkbox" on:change={toggle}/>
 	<span class="slider"></span>

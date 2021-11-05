@@ -22,8 +22,7 @@
         align-items: center;
         flex: 1;
     }
-
-	.search {
-		margin: 5rem 0 0 0;
-	}
+		.search {
+			margin: 5rem 0 0 0;
+		}
 </style>

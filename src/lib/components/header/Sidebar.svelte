@@ -1,13 +1,18 @@
-<script>
+<script lang="ts">
 	import { fly } from 'svelte/transition';
-	import {closeSidebarAction, openLookupAction, sidebar} from "../../../store/ui.store";
+	import {closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar} from "../../../store/ui.store";
 
-	let show = false;
+	let show: boolean = false;
 
-	const unsubscribe = sidebar.subscribe(value => {
+	sidebar.subscribe(value => {
 		show = value;
 	})
 
+	function openLookupHandler(index: number){
+		setLookupIndexAction(index)
+		openLookupAction();
+		closeSidebarAction();
+	}
 
 </script>
 
@@ -19,10 +24,10 @@
 		</div>
 		<div>
 			<ul class='list'>
-				<li class='list-item pointer' on:click={() => {openLookupAction(); closeSidebarAction(); }}>
+				<li class='list-item pointer' on:click={() => {openLookupHandler(0)}}>
 					Search Option
 				</li>
-				<li class='list-item pointer'>
+				<li class='list-item pointer' on:click={() => {openLookupHandler(1)}}>
 					Secondo
 				</li>
 				<li class='list-item pointer'>

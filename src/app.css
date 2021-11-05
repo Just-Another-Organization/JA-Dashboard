@@ -9,8 +9,6 @@
 	--theme-colors-shadow: #00000026;
 }
 
-
-
 body {
 	min-height: 100vh;
 	margin: 0;
@@ -32,3 +30,25 @@ body::before {
 .pointer {
 	cursor: pointer;
 }
+
+.lookup-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 2rem;
+}
+
+.lookup-header > p {
+	font-weight: 300;
+	font-size: 1.1rem;
+}
+
+.lookup-header > i {
+	font-size: 1.2rem;
+}
+
+.lookup-body {
+	display: flex;
+	flex-direction: column;
+}
+
