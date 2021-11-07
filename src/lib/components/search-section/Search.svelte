@@ -1,25 +1,29 @@
 <script lang="ts">
-	import {setting} from "../../../store/store";
-	import {onMount} from "svelte";
-	import type {Config} from "$lib/models/Config";
+	import { setting } from '../../../store/store';
+	import { onMount } from 'svelte';
+	import type { Config } from '$lib/models/Config';
+
+	const GOOGLE = 'google';
+	const DUCKDUCK = 'duckduck';
+	const DEFAULT_PROVIDER = GOOGLE;
 
 	let queryString: string;
 	let searchString: string;
-
 	let searchOption: boolean;
 
 	onMount(() => {
 		setting.subscribe((value: Config) => {
 			searchOption = value.searchOption;
-			switch (value.searchProvider) {
-				case 'google':
+			const searchProvider = value.searchProvider || DEFAULT_PROVIDER;
+			switch (searchProvider) {
+				case GOOGLE:
 					queryString = 'https://www.google.com/search?q=';
-					break
-				case 'duckduck':
+					break;
+				case DUCKDUCK:
 					queryString = 'https://duckduckgo.com/?q=';
-					break
+					break;
 			}
-		})
+		});
 	})
 
 	const onSearchEnter = e => {
