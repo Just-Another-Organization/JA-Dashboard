@@ -2,6 +2,7 @@
 	export const prerender = true;
 	import Search from '$lib/components/search-section/Search.svelte';
 	import Deepl from '$lib/components/deepl/Deepl.svelte';
+	import CoinsMap from '$lib/components/heatmap/Heatmap.svelte';
 </script>
 
 <svelte:head>
@@ -14,6 +15,9 @@
 	</div>
 	<div class='deepl'>
 		<Deepl />
+	</div>
+	<div class='coins-map'>
+		<CoinsMap />
 	</div>
 </section>
 

@@ -10,16 +10,16 @@
 
 <style>
   .footer {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100vw;
-    text-align: center;
-    background-color: var(--theme-colors-background);
-		color: var(--theme-colors-text);
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      text-align: center;
+      background-color: var(--theme-colors-background);
+      color: var(--theme-colors-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
   }
 
 	.void-box {
