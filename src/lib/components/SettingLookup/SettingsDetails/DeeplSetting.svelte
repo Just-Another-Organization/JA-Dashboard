@@ -23,7 +23,8 @@
   <div class='lookup-body'>
     <p class='input-header'>API-KEY</p>
     <input id='input-api-key' name='api-key' on:change='{(r) => updateDeeplApiKey(r.target.value)}' type='text'
-           value={settingValue.deeplApiKey || 'No API-KEY set'}>
+           placeholder='No API-KEY set'
+           value={settingValue.deeplApiKey}>
   </div>
 </div>
 

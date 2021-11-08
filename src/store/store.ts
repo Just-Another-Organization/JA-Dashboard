@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 import type { Config } from '$lib/models/Config';
 import Configurator from '$lib/services/configurator';
+import type { Shortcut } from '$lib/models/Shortcut';
 
 const configurator = new Configurator();
 
@@ -10,7 +11,8 @@ export const setting = writable<Config>({
 	deeplApiKey: '',
 	gitlabPrivateToken: '',
 	gitlabDomain: '',
-	gitlabUsername: ''
+	gitlabUsername: '',
+	notes: ''
 });
 
 export function setSearchType(searchOption: boolean): void {
@@ -35,6 +37,14 @@ export function setGitLabDomain(gitlabDomain: string): void {
 
 export function setGitLabUsername(gitlabUsername: string): void {
 	updateConfig('gitlabUsername', gitlabUsername);
+}
+
+export function setNotes(notes: string): void {
+	updateConfig('notes', notes);
+}
+
+export function setShortcuts(shortcuts: Shortcut[]): void {
+	updateConfig('shortcuts', shortcuts);
 }
 
 function updateConfig(name: string, value: any): void {

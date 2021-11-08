@@ -5,6 +5,7 @@
   import DeeplSetting from '$lib/components/SettingLookup/SettingsDetails/DeeplSetting.svelte';
   import { MenuItems } from '$lib/models/MenuItems';
   import GitLabSettings from '$lib/components/SettingLookup/SettingsDetails/GitLabSettings.svelte';
+  import ShortcutsSettings from '$lib/components/SettingLookup/SettingsDetails/ShortcutsSettings.svelte';
 
   let show = false;
   let index = -1;
@@ -24,12 +25,12 @@
     <div transition:fly={{y: 500, opacity: 1}} class='lookup'>
       {#if index === MenuItems.SEARCH_SETTINGS}
         <SearchSetting />
-      {/if}
-      {#if index === MenuItems.DEEPL_SETTINGS}
+      {:else if index === MenuItems.DEEPL_SETTINGS}
         <DeeplSetting />
-      {/if}
-      {#if index === MenuItems.GITLAB_SETTINGS}
+      {:else if index === MenuItems.GITLAB_SETTINGS}
         <GitLabSettings />
+      {:else if index === MenuItems.SHORTCUTS_SETTINGS}
+        <ShortcutsSettings />
       {/if}
     </div>
   {/if}

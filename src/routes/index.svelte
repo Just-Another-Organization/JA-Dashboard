@@ -6,6 +6,8 @@
 </script>
 <script>
 	import GitLab from '$lib/components/gitlab/GitLab.svelte';
+	import Notes from '$lib/components/notes/Notes.svelte';
+	import Shortcuts from '$lib/components/shortcuts/Shortcuts.svelte';
 </script>
 
 <svelte:head>
@@ -15,6 +17,12 @@
 <section>
 	<div class='search'>
 		<Search />
+	</div>
+	<div class='shortcuts'>
+		<Shortcuts />
+	</div>
+	<div class='notes'>
+		<Notes />
 	</div>
 	<div class='gitlab'>
 		<GitLab />

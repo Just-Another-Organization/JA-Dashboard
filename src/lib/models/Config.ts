@@ -1,3 +1,5 @@
+import type { Shortcut } from '$lib/models/Shortcut';
+
 export interface Config {
 	searchProvider: string;
 	searchOption: boolean;
@@ -5,4 +7,6 @@ export interface Config {
 	gitlabPrivateToken: string;
 	gitlabDomain: string;
 	gitlabUsername: string;
+	notes: string;
+	shortcuts: Shortcut[];
 }

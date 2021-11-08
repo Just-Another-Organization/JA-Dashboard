@@ -34,6 +34,9 @@
 				<li class='list-item pointer' on:click={() => {openLookupHandler(MenuItems.GITLAB_SETTINGS)}}>
 					GitLab Option
 				</li>
+				<li class='list-item pointer' on:click={() => {openLookupHandler(MenuItems.SHORTCUTS_SETTINGS)}}>
+					Shortcuts Option
+				</li>
 			</ul>
 
 		</div>
