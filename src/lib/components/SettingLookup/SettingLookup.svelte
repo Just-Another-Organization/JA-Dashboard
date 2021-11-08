@@ -3,7 +3,8 @@
   import { lookupI, lookupV } from '../../../store/ui.store';
   import SearchSetting from '$lib/components/SettingLookup/SettingsDetails/SearchSetting.svelte';
   import DeeplSetting from '$lib/components/SettingLookup/SettingsDetails/DeeplSetting.svelte';
-
+  import { MenuItems } from '$lib/models/MenuItems';
+  import GitLabSettings from '$lib/components/SettingLookup/SettingsDetails/GitLabSettings.svelte';
 
   let show = false;
   let index = -1;
@@ -21,11 +22,14 @@
 <section>
   {#if show}
     <div transition:fly={{y: 500, opacity: 1}} class='lookup'>
-      {#if index === 0}
+      {#if index === MenuItems.SEARCH_SETTINGS}
         <SearchSetting />
       {/if}
-      {#if index === 1}
+      {#if index === MenuItems.DEEPL_SETTINGS}
         <DeeplSetting />
+      {/if}
+      {#if index === MenuItems.GITLAB_SETTINGS}
+        <GitLabSettings />
       {/if}
     </div>
   {/if}

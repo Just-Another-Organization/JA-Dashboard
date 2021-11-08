@@ -4,35 +4,46 @@ import Configurator from '$lib/services/configurator';
 
 const configurator = new Configurator();
 
-// SET SETTING STORE
 export const setting = writable<Config>({
 	searchOption: false,
 	searchProvider: '',
-	deeplApiKey: ''
+	deeplApiKey: '',
+	gitlabPrivateToken: '',
+	gitlabDomain: '',
+	gitlabUsername: ''
 });
 
-// SEARCH TYPE SAVE FUNCTION
-export function setSearchType(searchOption: boolean) {
-	setting.subscribe(oldSetting => {
-		const newConfig: Config = { ...oldSetting, searchOption };
-		configurator.setConfig(newConfig);
-	});
-	setting.update(setting => setting = { ...setting, searchOption });
+export function setSearchType(searchOption: boolean): void {
+	updateConfig('searchOption', searchOption);
 }
 
-// SEARCH PROVIDER SAVE FUNCTION
-export function setSearchProvider(searchProvider: string) {
-	setting.subscribe(oldSetting => {
-		const newConfig: Config = { ...oldSetting, searchProvider };
-		configurator.setConfig(newConfig);
-	});
-	setting.update(setting => setting = { ...setting, searchProvider });
+export function setSearchProvider(searchProvider: string): void {
+	updateConfig('searchProvider', searchProvider);
 }
 
-export function setDeeplApiKey(deeplApiKey: string) {
-	setting.subscribe(oldSetting => {
-		const newConfig: Config = { ...oldSetting, deeplApiKey: deeplApiKey };
-		configurator.setConfig(newConfig);
+export function setDeeplApiKey(deeplApiKey: string): void {
+	updateConfig('deeplApiKey', deeplApiKey);
+}
+
+export function setGitLabPrivateToken(gitlabPrivateToken: string): void {
+	updateConfig('gitlabPrivateToken', gitlabPrivateToken);
+}
+
+export function setGitLabDomain(gitlabDomain: string): void {
+	updateConfig('gitlabDomain', gitlabDomain);
+}
+
+export function setGitLabUsername(gitlabUsername: string): void {
+	updateConfig('gitlabUsername', gitlabUsername);
+}
+
+function updateConfig(name: string, value: any): void {
+	setting.subscribe((oldSetting: Config) => {
+		oldSetting[name] = value;
+		configurator.setConfig(oldSetting);
 	});
-	setting.update(setting => setting = { ...setting, deeplApiKey: deeplApiKey });
+	setting.update((setting) => {
+		setting[name] = value;
+		return setting;
+	});
 }

@@ -4,9 +4,9 @@
 	import { onMount } from 'svelte';
 	import { Language } from '$lib/models/Language';
 
-	const DEEPL_BASE_URL = 'https://api-free.deepl.com/v2/';
-	const DEEPL_TRANSLATE = DEEPL_BASE_URL + 'translate';
-	const DEEPL_LANGUAGES = DEEPL_BASE_URL + 'languages';
+	const DEEPL_BASE_URL = 'https://api-free.deepl.com/v2';
+	const DEEPL_TRANSLATE = DEEPL_BASE_URL + '/translate';
+	const DEEPL_LANGUAGES = DEEPL_BASE_URL + '/languages';
 
 	let inputText = '';
 	let translatedText = '';

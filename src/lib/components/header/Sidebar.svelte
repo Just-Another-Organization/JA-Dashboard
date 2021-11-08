@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar } from '../../../store/ui.store';
+	import { MenuItems } from '$lib/models/MenuItems';
 
 	let show = false;
 
@@ -24,14 +25,14 @@
 		</div>
 		<div>
 			<ul class='list'>
-				<li class='list-item pointer' on:click={() => {openLookupHandler(0)}}>
+				<li class='list-item pointer' on:click={() => {openLookupHandler(MenuItems.SEARCH_SETTINGS)}}>
 					Search Option
 				</li>
-				<li class='list-item pointer' on:click={() => {openLookupHandler(1)}}>
-					Deepl
+				<li class='list-item pointer' on:click={() => {openLookupHandler(MenuItems.DEEPL_SETTINGS)}}>
+					Deepl Option
 				</li>
-				<li class='list-item pointer'>
-					Terzo
+				<li class='list-item pointer' on:click={() => {openLookupHandler(MenuItems.GITLAB_SETTINGS)}}>
+					GitLab Option
 				</li>
 			</ul>
 

@@ -1,8 +1,11 @@
-<script context="module" lang="ts">
+<script context='module' lang='ts'>
 	export const prerender = true;
 	import Search from '$lib/components/search-section/Search.svelte';
 	import Deepl from '$lib/components/deepl/Deepl.svelte';
-	import CoinsMap from '$lib/components/heatmap/Heatmap.svelte';
+	import Heatmap from '$lib/components/heatmap/Heatmap.svelte';
+</script>
+<script>
+	import GitLab from '$lib/components/gitlab/GitLab.svelte';
 </script>
 
 <svelte:head>
@@ -13,11 +16,14 @@
 	<div class='search'>
 		<Search />
 	</div>
+	<div class='gitlab'>
+		<GitLab />
+	</div>
 	<div class='deepl'>
 		<Deepl />
 	</div>
-	<div class='coins-map'>
-		<CoinsMap />
+	<div class='heatmap'>
+		<Heatmap />
 	</div>
 </section>
 
