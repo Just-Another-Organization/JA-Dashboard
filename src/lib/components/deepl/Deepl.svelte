@@ -106,7 +106,8 @@
 	<div class='component-wrapper'>
 		<div id='heading'>
 			<p>DeepL</p>
-			<button on:click={() => {swapLanguages()}}>Swap</button>
+			<i class='fas fa-exchange-alt fa-2x'
+				 on:click={() => {swapLanguages()}}></i>
 		</div>
 		<div id='content-area'>
 			<div>
