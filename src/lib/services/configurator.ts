@@ -1,12 +1,20 @@
 import type { Config } from '$lib/models/Config';
 
-export default class Configurator {
+const CONFIGURATOR_SERVICE_NAME = 'ja_dashboard_configurator';
+const CONFIGURATOR_PORT = '3001';
+const CONFIGURATOR_BASE_URL = 'http://' + CONFIGURATOR_SERVICE_NAME + ':' + CONFIGURATOR_PORT;
 
-	async getConfig(): Promise<any>  {
-		return await fetch('http://localhost:80/get-configuration', {method: 'GET'}).then(res => res.json());
+export default class Configurator {
+	async getConfig(): Promise<any> {
+		return await fetch(CONFIGURATOR_BASE_URL + '/get-configuration', {
+			method: 'GET'
+		}).then(res => res.json());
 	}
 
 	async setConfig(conf: Config): Promise<any> {
-		return await fetch('http://localhost:80/set-configuration', {method: 'POST', body: JSON.stringify(conf)}).then( res => res.status);
+		return await fetch(CONFIGURATOR_BASE_URL + '/set-configuration', {
+			method: 'POST',
+			body: JSON.stringify(conf)
+		}).then(res => res.status);
 	}
 }

@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	export const prerender = true;
 	import Search from '$lib/components/search-section/Search.svelte';
+	import Deepl from '$lib/components/deepl/Deepl.svelte';
 </script>
 
 <svelte:head>
@@ -10,6 +11,9 @@
 <section>
 	<div class='search'>
 		<Search />
+	</div>
+	<div class='deepl'>
+		<Deepl />
 	</div>
 </section>
 

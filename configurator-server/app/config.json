@@ -1,1 +1,5 @@
-{"searchProvider": "google", "searchOption": true}
+{
+  "searchProvider": "google",
+  "searchOption": true,
+  "deeplApiKey": "8f7ebacc-9041-b9ea-8514-c3de971aec77:fx"
+}

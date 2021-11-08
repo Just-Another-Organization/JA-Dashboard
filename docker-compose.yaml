@@ -7,6 +7,10 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     env_file: .env
+    links:
+      - ja_dashboard_configurator
+    depends_on:
+      - ja_dashboard_configurator
     ports:
       - "${PORT}:3000"
       - "24678:24678"

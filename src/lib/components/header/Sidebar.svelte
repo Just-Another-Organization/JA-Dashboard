@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import {closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar} from "../../../store/ui.store";
+	import { closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar } from '../../../store/ui.store';
 
-	let show: boolean = false;
+	let show = false;
 
 	sidebar.subscribe(value => {
 		show = value;
@@ -28,7 +28,7 @@
 					Search Option
 				</li>
 				<li class='list-item pointer' on:click={() => {openLookupHandler(1)}}>
-					Secondo
+					Deepl
 				</li>
 				<li class='list-item pointer'>
 					Terzo
