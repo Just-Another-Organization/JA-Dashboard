@@ -13,6 +13,9 @@ gen
 
 .env
 
+src/*.js
+src/*.js.map
+
 .venv
 /configurator-server/venv/
 /configurator-server/app/config.json
