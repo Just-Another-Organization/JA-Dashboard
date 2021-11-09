@@ -61,11 +61,6 @@
 </script>
 
 <div>
-	<div class='lookup-header'>
-		<p></p>
-		<p>Shortcuts Option</p>
-		<i class='fas fa-chevron-down pointer' on:click={() => {closeLookupAction();}}></i>
-	</div>
 	<div class='lookup-body'>
 		<div id='manage-shortcuts'>
 			{#if shortcuts && shortcuts.length > 0}

@@ -1,14 +1,13 @@
 <script context='module' lang='ts'>
 	export const prerender = true;
-	import Search from '$lib/components/search-section/Search.svelte';
-	import Deepl from '$lib/components/deepl/Deepl.svelte';
-	import Heatmap from '$lib/components/heatmap/Heatmap.svelte';
+	import Search from '$lib/components/Modules/search-section/Search.svelte';
+	import Deepl from '$lib/components/Modules/deepl-module/Deepl.svelte';
+	import Heatmap from '$lib/components/Modules/heatmap/Heatmap.svelte';
+	import GitLab from '$lib/components/Modules/gitlab/GitLab.svelte';
+	import Notes from '$lib/components/Modules/notes/Notes.svelte';
+	import Shortcuts from '$lib/components/Modules/shortcuts/Shortcuts.svelte';
 </script>
-<script>
-	import GitLab from '$lib/components/gitlab/GitLab.svelte';
-	import Notes from '$lib/components/notes/Notes.svelte';
-	import Shortcuts from '$lib/components/shortcuts/Shortcuts.svelte';
-</script>
+
 
 <svelte:head>
 	<title>JADashboard</title>

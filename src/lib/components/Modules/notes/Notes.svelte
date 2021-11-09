@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { setNotes, setting } from '../../../store/store';
+	import { setNotes, setting } from '../../../../store/store';
 	import type { Config } from '$lib/models/Config';
 	import { onMount } from 'svelte';
 

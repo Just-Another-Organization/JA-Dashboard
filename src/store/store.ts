@@ -12,7 +12,8 @@ export const setting = writable<Config>({
 	gitlabPrivateToken: '',
 	gitlabDomain: '',
 	gitlabUsername: '',
-	notes: ''
+	notes: '',
+	shortcuts: [],
 });
 
 export function setSearchType(searchOption: boolean): void {

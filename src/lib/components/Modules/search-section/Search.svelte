@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setting } from '../../../store/store';
+	import { setting } from '../../../../store/store';
 	import { onMount } from 'svelte';
 	import type { Config } from '$lib/models/Config';
 
@@ -26,21 +26,21 @@
 		});
 	})
 
-	const onSearchEnter = e => {
+	function onSearchEnter(e) {
 		const searchText:string = queryString + searchString;
 		if (e.charCode === 13 && searchString.trim() != '') {
 			search(searchText);
 		}
-	};
+	}
 
-	const onSearchButton = () => {
+	function onSearchButton() {
 		const searchText:string = queryString + searchString;
 		if( searchString.trim() != ''){
 			search(searchText);
 		}
 	}
 
-	const search = (text: string) => {
+	function search(text: string) {
 	  if (searchOption === true){
 			window.location.replace(text)
 		} else if (searchOption === false) {

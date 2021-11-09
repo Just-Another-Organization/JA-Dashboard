@@ -1,5 +1,3 @@
-import type { Shortcut } from '$lib/models/Shortcut';
-
 export interface Config {
 	searchProvider: string;
 	searchOption: boolean;
@@ -9,4 +7,10 @@ export interface Config {
 	gitlabUsername: string;
 	notes: string;
 	shortcuts: Shortcut[];
+}
+
+export interface Shortcut {
+	name: string;
+	icon: string;
+	url: string;
 }

@@ -14,7 +14,6 @@
 	import {setting, } from "../store/store";
 	import {onMount} from "svelte";
 
-
 	const configurator = new Configurator();
 	async function getConfig(): any {
 		await configurator.getConfig().then((config: Config) => {
@@ -25,8 +24,6 @@
 		getConfig();
 	})
 
-
-
 </script>
 
 <ThemeWrapper themes={themes}>
@@ -36,7 +33,6 @@
 	</main>
 	<Footer />
 	<SettingLookup/>
-
 </ThemeWrapper>
 
 <style>
