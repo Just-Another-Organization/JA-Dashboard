@@ -3,6 +3,7 @@
 	import { closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar } from '$store/ui.store';
 	import { SIDEBAR } from '$lib/models/SIDEBAR';
 
+
 	let show = false;
 
 	sidebar.subscribe(value => {

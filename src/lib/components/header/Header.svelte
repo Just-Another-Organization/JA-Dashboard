@@ -1,6 +1,6 @@
 <script>
 	import Sidebar from '$lib/components/header/Sidebar.svelte';
-	import {openSidebarAction} from '$store/ui.store';
+	import { openSidebarAction } from '$store/ui.store';
 </script>
 
 <header>

@@ -1,8 +1,8 @@
 <script lang='ts'>
 	import { setting } from '$store/store';
-	import type { Config } from '$lib/models/Config';
+	import type { Config } from '$models/Config';
 	import { onMount } from 'svelte';
-	import { Language } from '$lib/models/Language';
+	import { Language } from '$models/Language';
 
 	const DEEPL_BASE_URL = 'https://api-free.deepl.com/v2';
 	const DEEPL_TRANSLATE = DEEPL_BASE_URL + '/translate';

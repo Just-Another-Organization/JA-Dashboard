@@ -2,13 +2,14 @@
   import { fly } from 'svelte/transition';
   import { closeLookupAction, lookupI, lookupV } from '$store/ui.store';
 
-  import SearchSetting from '$lib/components/SettingLookup/SettingsDetails/SearchSetting.svelte';
-  import DeeplSetting from '$lib/components/SettingLookup/SettingsDetails/DeeplSetting.svelte';
-  import GitLabSettings from '$lib/components/SettingLookup/SettingsDetails/GitLabSettings.svelte';
-  import ShortcutsSettings from '$lib/components/SettingLookup/SettingsDetails/ShortcutsSettings.svelte';
+  import SearchSetting from '$setting/SearchSetting.svelte';
+  import DeeplSetting from '$setting/DeeplSetting.svelte';
+  import GitLabSettings from '$setting/GitLabSettings.svelte';
+  import ShortcutsSettings from '$setting/ShortcutsSettings.svelte';
 
   import { MenuItems } from '$models/MenuItems';
   import { SIDEBAR } from '$models/SIDEBAR';
+
 
   let show = false;
   let index = -1;

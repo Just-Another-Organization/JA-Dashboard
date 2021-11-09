@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { setting } from '$store/store';
 	import { onMount } from 'svelte';
-	import type { Config } from '$lib/models/Config';
+	import type { Config } from '$models/Config';
 
 	const GOOGLE = 'google';
 	const DUCKDUCK = 'duckduck';

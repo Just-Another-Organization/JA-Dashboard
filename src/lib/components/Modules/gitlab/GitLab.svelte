@@ -1,7 +1,7 @@
 <script lang='ts'>
 	import { onMount } from 'svelte';
 	import { setting } from '$store/store';
-	import { Config } from '$lib/models/Config';
+	import type { Config } from '$models/Config';
 
 	let GITLAB_BASE_URL: URL;
 	let GITLAB_ISSUES: URL;

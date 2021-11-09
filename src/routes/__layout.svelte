@@ -11,8 +11,9 @@
 	import type {Config} from "$models/Config";
 	import Configurator from '$lib/services/configurator';
 
-	import {setting, } from '$store/store';
 	import {onMount} from "svelte";
+	import { setting } from '$store/store';
+
 
 	const configurator = new Configurator();
 	async function getConfig(): any {

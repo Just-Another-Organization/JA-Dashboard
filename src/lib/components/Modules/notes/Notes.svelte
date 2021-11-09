@@ -1,6 +1,6 @@
 <script lang='ts'>
 	import { setNotes, setting } from '$store/store';
-	import type { Config } from '$lib/models/Config';
+	import type { Config } from '$models/Config';
 	import { onMount } from 'svelte';
 
 	let notes = '';
