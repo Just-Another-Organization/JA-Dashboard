@@ -1,7 +1,6 @@
 <script lang='ts'>
-	import { closeLookupAction } from '../../../../store/ui.store';
-	import { setGitLabDomain, setGitLabPrivateToken, setGitLabUsername, setting } from '../../../../store/store';
-	import { Config } from '$lib/models/Config';
+	import { setGitLabDomain, setGitLabPrivateToken, setGitLabUsername, setting } from '$store/store';
+	import { Config } from '$models/Config';
 
 	let settingValue: Config;
 

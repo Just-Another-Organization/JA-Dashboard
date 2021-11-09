@@ -1,11 +1,11 @@
 <script context='module' lang='ts'>
 	export const prerender = true;
-	import Search from '$lib/components/Modules/search-section/Search.svelte';
-	import Deepl from '$lib/components/Modules/deepl-module/Deepl.svelte';
-	import Heatmap from '$lib/components/Modules/heatmap/Heatmap.svelte';
-	import GitLab from '$lib/components/Modules/gitlab/GitLab.svelte';
-	import Notes from '$lib/components/Modules/notes/Notes.svelte';
-	import Shortcuts from '$lib/components/Modules/shortcuts/Shortcuts.svelte';
+	import Search from '$module/search-section/Search.svelte';
+	import Deepl from '$module/deepl-module/Deepl.svelte';
+	import Heatmap from '$module/heatmap/Heatmap.svelte';
+	import GitLab from '$module/gitlab/GitLab.svelte';
+	import Notes from '$module/notes/Notes.svelte';
+	import Shortcuts from '$module/shortcuts/Shortcuts.svelte';
 </script>
 
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import {setSearchProvider, setSearchType, setting} from "../../../../store/store";
-  import {Config} from "$lib/models/Config";
+  import {setSearchProvider, setSearchType, setting} from '$store/store';
+  import {Config} from "$models/Config";
 
   let settingValue: Config;
 
@@ -8,7 +8,7 @@
     settingValue = value;
   })
 
-  const updateSearchOption = (value: string) => {
+  function updateSearchOption(value: string){
     if (value === 'true'){
       setSearchType(true)
     }else {
@@ -16,7 +16,7 @@
     }
   }
 
-  const updateSearchProvider = (value: string) => {
+  function updateSearchProvider(value: string){
     setSearchProvider(value)
   }
 </script>
@@ -35,10 +35,10 @@
     <p class="settings-input-label">Search Mode</p>
     <select class="settings-input" value={settingValue.searchOption ? 'true' : 'false'} on:change="{(r) => updateSearchOption(r.target.value)}">
       <option value="true">
-        Apri nella stessa finestra
+        Open in same tab
       </option>
       <option value="false">
-        Apri in una nuova finestra
+        Open in new tab
       </option>
     </select>
   </div>

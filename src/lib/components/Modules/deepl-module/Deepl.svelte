@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { setting } from '../../../../store/store';
+	import { setting } from '$store/store';
 	import type { Config } from '$lib/models/Config';
 	import { onMount } from 'svelte';
 	import { Language } from '$lib/models/Language';

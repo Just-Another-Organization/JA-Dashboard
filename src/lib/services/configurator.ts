@@ -1,4 +1,4 @@
-import type { Config } from '$lib/models/Config';
+import type { Config } from '$models/Config';
 
 const CONFIGURATOR_SERVICE_NAME = 'ja_dashboard_configurator';
 const CONFIGURATOR_PORT = '3001';

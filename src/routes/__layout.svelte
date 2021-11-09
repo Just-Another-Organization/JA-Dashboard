@@ -8,10 +8,10 @@
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import SettingLookup from "$lib/components/SettingLookup/SettingLookup.svelte";
 
-	import type {Config} from "$lib/models/Config";
+	import type {Config} from "$models/Config";
 	import Configurator from '$lib/services/configurator';
 
-	import {setting, } from "../store/store";
+	import {setting, } from '$store/store';
 	import {onMount} from "svelte";
 
 	const configurator = new Configurator();

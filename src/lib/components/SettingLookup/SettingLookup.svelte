@@ -1,12 +1,14 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
-  import { closeLookupAction, lookupI, lookupV } from '../../../store/ui.store';
+  import { closeLookupAction, lookupI, lookupV } from '$store/ui.store';
+
   import SearchSetting from '$lib/components/SettingLookup/SettingsDetails/SearchSetting.svelte';
   import DeeplSetting from '$lib/components/SettingLookup/SettingsDetails/DeeplSetting.svelte';
-  import { MenuItems } from '$lib/models/MenuItems';
   import GitLabSettings from '$lib/components/SettingLookup/SettingsDetails/GitLabSettings.svelte';
   import ShortcutsSettings from '$lib/components/SettingLookup/SettingsDetails/ShortcutsSettings.svelte';
-  import { SIDEBAR } from '$lib/models/SIDEBAR';
+
+  import { MenuItems } from '$models/MenuItems';
+  import { SIDEBAR } from '$models/SIDEBAR';
 
   let show = false;
   let index = -1;

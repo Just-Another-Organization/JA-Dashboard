@@ -1,6 +1,5 @@
 <script lang='ts'>
-	import { closeLookupAction } from '../../../../store/ui.store';
-	import { setShortcuts, setting } from '../../../../store/store';
+	import { setShortcuts, setting } from '$store/store';
 	import { Config } from '$lib/models/Config';
 	import type { Shortcut } from '$lib/models/Shortcut';
 

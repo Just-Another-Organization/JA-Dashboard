@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
-import type { Config } from '$lib/models/Config';
+import type { Config, Shortcut } from '$models/Config';
 import Configurator from '$lib/services/configurator';
-import type { Shortcut } from '$lib/models/Shortcut';
+
 
 const configurator = new Configurator();
 

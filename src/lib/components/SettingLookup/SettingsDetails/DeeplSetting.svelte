@@ -1,7 +1,7 @@
 <script lang='ts'>
 
-  import { setDeeplApiKey, setting } from '../../../../store/store';
-  import { Config } from '$lib/models/Config';
+  import { setDeeplApiKey, setting } from '$store/store';
+  import { Config } from '$models/Config';
 
   let settingValue: Config;
 

@@ -24,7 +24,13 @@
 		"checkJs": true,
 		"paths": {
 			"$lib": ["src/lib"],
-			"$lib/*": ["src/lib/*"]
+			"$lib/*": ["src/lib/*"],
+			"$module": ["src/lib/components/Modules"],
+			"$module/*": ["src/lib/components/Modules/*"],
+			"$models": ["src/lib/models"],
+			"$models/*": ["src/lib/models/*"],
+			"$store": ["src/store"],
+			"$store/*": ["src/store/*"]
 		}
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]

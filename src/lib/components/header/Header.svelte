@@ -1,9 +1,6 @@
 <script>
 	import Sidebar from '$lib/components/header/Sidebar.svelte';
-	import {openSidebarAction} from "../../../store/ui.store";
-
-
-
+	import {openSidebarAction} from '$store/ui.store';
 </script>
 
 <header>
@@ -16,7 +13,6 @@
 	<div class='corner pointer'>
 		<i class="fab fa-github corner-icon"></i>
 	</div>
-
 	<Sidebar />
 </header>
 

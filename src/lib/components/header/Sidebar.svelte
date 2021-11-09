@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar } from '../../../store/ui.store';
-	import { MenuItems } from '$lib/models/MenuItems';
+	import { closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar } from '$store/ui.store';
 	import { SIDEBAR } from '$lib/models/SIDEBAR';
 
 	let show = false;
@@ -27,7 +26,7 @@
 		<div>
 			<ul class='list'>
 				{#each SIDEBAR as item, i}
-					<li class='list-item pointer' on:click={() => {openLookupHandler(i)}}>
+					<li class='list-item pointer' on:click={() => openLookupHandler(i)}>
 						{item} Option
 					</li>
 				{/each}
