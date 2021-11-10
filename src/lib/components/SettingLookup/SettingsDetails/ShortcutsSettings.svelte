@@ -14,7 +14,6 @@
 		if (!shortcuts) {
 			shortcuts = [];
 		}
-		console.log(shortcuts);
 	});
 
 	function initNewShortcut(): void {
