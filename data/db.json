@@ -1,0 +1,23 @@
+{
+  "search": {
+    "searchProvider": "",
+    "searchOption": ""
+  },
+  "deepl": {
+    "apiKey": ""
+  },
+  "gitLab": [
+    {
+      "gitlabPrivateToken": "",
+      "gitlabDomain": "",
+      "gitlabUsername": ""
+    }
+  ],
+  "notes": [
+    {
+      "note": ""
+    }
+  ]
+}
+
+

@@ -8,22 +8,7 @@
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import SettingLookup from "$lib/components/SettingLookup/SettingLookup.svelte";
 
-	import type {Config} from "$models/Config";
-	import Configurator from '$lib/services/configurator';
 
-	import {onMount} from "svelte";
-	import { setting } from '$store/store';
-
-
-	const configurator = new Configurator();
-	async function getConfig(): any {
-		await configurator.getConfig().then((config: Config) => {
-			setting.set( config );
-		})
-	}
-	onMount(() => {
-		getConfig();
-	})
 
 </script>
 

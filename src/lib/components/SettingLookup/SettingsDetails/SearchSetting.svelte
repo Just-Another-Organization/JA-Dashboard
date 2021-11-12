@@ -1,23 +1,35 @@
 <script lang="ts">
-  import {setSearchProvider, setSearchType, setting} from '$store/store';
-  import {Config} from "$models/Config";
+  import {SearchConfig} from "$models/Config";
+  import {onDestroy, onMount} from "svelte";
+  import type {Unsubscriber} from "svelte/store";
+  import searchEffect, {setting} from "$store/store";
 
-  let settingValue: Config;
+  let settingValue: SearchConfig;
+  let observable: Unsubscriber;
 
-  setting.subscribe(value => {
-    settingValue = value;
+
+  onMount(() => {
+    observable = setting.subscribe(value => {
+      settingValue = value.searchConfig;
+    })
+  })
+
+  onDestroy(() => {
+    observable();
   })
 
   function updateSearchOption(value: string){
     if (value === 'true'){
-      setSearchType(true)
+      let config: SearchConfig = {searchProvider: settingValue.searchProvider,searchOption: true}
+      searchEffect(config);
     }else {
-      setSearchType(false)
+      let config: SearchConfig = {searchProvider: settingValue.searchProvider,searchOption: false}
+      searchEffect(config);
     }
   }
-
   function updateSearchProvider(value: string){
-    setSearchProvider(value)
+    let config: SearchConfig = {searchProvider: value,searchOption: settingValue.searchOption}
+    searchEffect(config);
   }
 </script>
 

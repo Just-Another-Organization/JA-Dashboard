@@ -1,0 +1,28 @@
+version: '3'
+services:
+  ja_dashboard:
+    container_name: ja_dashboard
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file: .env
+    links:
+      - json-server
+    depends_on:
+      - json-server
+    ports:
+      - "${PORT}:3000"
+      - "24678:24678"
+    volumes:
+      - .:/app/
+      - /app/node_modules
+  json-server:
+    image: vimagick/json-server
+    restart: unless-stopped
+    command: -H 0.0.0.0 -p 80 -w db.json
+    env_file: .env
+    ports:
+      - "${SERVER_PORT}:80"
+    volumes:
+      - ./data:/data

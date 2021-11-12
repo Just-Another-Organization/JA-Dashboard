@@ -1,29 +1,27 @@
 import { writable } from 'svelte/store';
-import type { Config, Shortcut } from '$models/Config';
-import Configurator from '$lib/services/configurator';
+import type {Config, SearchConfig} from '$models/Config';
+import {setSearchConfig} from "$lib/services/search.service";
 
-
-const configurator = new Configurator();
 
 export const setting = writable<Config>({
-	searchOption: false,
-	searchProvider: '',
-	deeplApiKey: '',
-	gitlabPrivateToken: '',
-	gitlabDomain: '',
-	gitlabUsername: '',
-	notes: '',
-	shortcuts: [],
+	searchConfig: undefined,
+	deeplConfig: undefined,
+	gitLabConfig: [],
+	notesConfig: [],
+	shortcuts: []
 });
 
-export function setSearchType(searchOption: boolean): void {
-	updateConfig('searchOption', searchOption);
+
+export default function searchEffect(config: SearchConfig): void {
+	setSearchConfig(config).then(r => {
+		setting.update((setting) => {
+			setting.searchConfig = config;
+			return setting;
+		});
+	});
 }
 
-export function setSearchProvider(searchProvider: string): void {
-	updateConfig('searchProvider', searchProvider);
-}
-
+/*
 export function setDeeplApiKey(deeplApiKey: string): void {
 	updateConfig('deeplApiKey', deeplApiKey);
 }
@@ -47,14 +45,9 @@ export function setNotes(notes: string): void {
 export function setShortcuts(shortcuts: Shortcut[]): void {
 	updateConfig('shortcuts', shortcuts);
 }
+*/
 
-function updateConfig(name: string, value: any): void {
-	setting.subscribe((oldSetting: Config) => {
-		oldSetting[name] = value;
-		configurator.setConfig(oldSetting);
-	});
-	setting.update((setting) => {
-		setting[name] = value;
-		return setting;
-	});
-}
+
+
+
+
