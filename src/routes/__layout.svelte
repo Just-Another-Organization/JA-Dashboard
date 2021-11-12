@@ -7,7 +7,10 @@
 	import Header from '$lib/components/header/Header.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import SettingLookup from "$lib/components/SettingLookup/SettingLookup.svelte";
+	import {initStore} from "$store/store";
 
+
+	initStore();
 
 
 </script>

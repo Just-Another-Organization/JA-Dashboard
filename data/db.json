@@ -1,7 +1,7 @@
 {
   "search": {
-    "searchProvider": "",
-    "searchOption": ""
+    "searchProvider": "duckduck",
+    "searchOption": false
   },
   "deepl": {
     "apiKey": ""
@@ -19,5 +19,3 @@
     }
   ]
 }
-
-

@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import type {Config, SearchConfig} from '$models/Config';
-import {setSearchConfig} from "$lib/services/search.service";
+import {getSearchConfig, setSearchConfig} from "$lib/services/search.service";
 
 
 export const setting = writable<Config>({
@@ -11,9 +11,14 @@ export const setting = writable<Config>({
 	shortcuts: []
 });
 
+export function initStore(): void{
+	initSetting();
+}
 
-export default function searchEffect(config: SearchConfig): void {
-	setSearchConfig(config).then(r => {
+/*-- EFFECT (SEND TO DB AND UPDATE THE STORE)  --*/
+
+export function searchEffect(config: SearchConfig): void {
+	setSearchConfig(config).then( () => {
 		setting.update((setting) => {
 			setting.searchConfig = config;
 			return setting;
@@ -21,31 +26,17 @@ export default function searchEffect(config: SearchConfig): void {
 	});
 }
 
-/*
-export function setDeeplApiKey(deeplApiKey: string): void {
-	updateConfig('deeplApiKey', deeplApiKey);
-}
 
-export function setGitLabPrivateToken(gitlabPrivateToken: string): void {
-	updateConfig('gitlabPrivateToken', gitlabPrivateToken);
-}
+/*-- INIT (GET FROM DB AND SET STORAGE)  --*/
 
-export function setGitLabDomain(gitlabDomain: string): void {
-	updateConfig('gitlabDomain', gitlabDomain);
+function initSetting() {
+	getSearchConfig().then( (res) => {
+		setting.update((setting) => {
+			setting.searchConfig = res;
+			return setting;
+		});
+	})
 }
-
-export function setGitLabUsername(gitlabUsername: string): void {
-	updateConfig('gitlabUsername', gitlabUsername);
-}
-
-export function setNotes(notes: string): void {
-	updateConfig('notes', notes);
-}
-
-export function setShortcuts(shortcuts: Shortcut[]): void {
-	updateConfig('shortcuts', shortcuts);
-}
-*/
 
 
 

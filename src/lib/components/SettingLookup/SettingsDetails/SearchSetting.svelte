@@ -2,15 +2,14 @@
   import {SearchConfig} from "$models/Config";
   import {onDestroy, onMount} from "svelte";
   import type {Unsubscriber} from "svelte/store";
-  import searchEffect, {setting} from "$store/store";
+  import {searchEffect, setting} from "$store/store";
 
-  let settingValue: SearchConfig;
+  let searchConfig: SearchConfig;
   let observable: Unsubscriber;
-
 
   onMount(() => {
     observable = setting.subscribe(value => {
-      settingValue = value.searchConfig;
+      searchConfig = value.searchConfig;
     })
   })
 
@@ -20,23 +19,20 @@
 
   function updateSearchOption(value: string){
     if (value === 'true'){
-      let config: SearchConfig = {searchProvider: settingValue.searchProvider,searchOption: true}
-      searchEffect(config);
+      searchEffect({...searchConfig, searchOption: true});
     }else {
-      let config: SearchConfig = {searchProvider: settingValue.searchProvider,searchOption: false}
-      searchEffect(config);
+      searchEffect({...searchConfig, searchOption: false});
     }
   }
   function updateSearchProvider(value: string){
-    let config: SearchConfig = {searchProvider: value,searchOption: settingValue.searchOption}
-    searchEffect(config);
+    searchEffect({...searchConfig, searchProvider: value});
   }
 </script>
 
 <div>
   <div class="lookup-body">
     <p class="settings-input-label">Search Provider</p>
-    <select class="settings-input" value={settingValue.searchProvider} on:change="{(r) => updateSearchProvider(r.target.value)}">
+    <select class="settings-input" value={searchConfig?.searchProvider} on:change="{(r) => updateSearchProvider(r.target.value)}">
       <option value="google">
         Google
       </option>
@@ -45,7 +41,7 @@
       </option>
     </select>
     <p class="settings-input-label">Search Mode</p>
-    <select class="settings-input" value={settingValue.searchOption ? 'true' : 'false'} on:change="{(r) => updateSearchOption(r.target.value)}">
+    <select class="settings-input" value={searchConfig?.searchOption ? 'true' : 'false'} on:change="{(r) => updateSearchOption(r.target.value)}">
       <option value="true">
         Open in same tab
       </option>
