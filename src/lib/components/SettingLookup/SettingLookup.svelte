@@ -9,18 +9,19 @@
 
   import { MenuItems } from '$models/MenuItems';
   import { SIDEBAR } from '$models/SIDEBAR';
-
+  import {onMount} from "svelte";
 
   let show = false;
   let index = -1;
 
-  lookupV.subscribe(value => {
-    show = value;
-  });
-
-  lookupI.subscribe(value => {
-    index = value;
-  });
+  onMount(() => {
+    lookupV.subscribe(value => {
+      show = value;
+    });
+    lookupI.subscribe(value => {
+      index = value;
+    });
+  })
 
   function getSettingName(index: number) {
     return SIDEBAR[index];
@@ -28,9 +29,10 @@
 
 </script>
 
-<div>
+
+<div >
   {#if show}
-    <div transition:fly={{y: 500, opacity: 1}} class='lookup'>
+    <div transition:fly={{y: 500, opacity: 1}} class='lookup'  id="lookup">
       <div class='lookup-header'>
         <p></p>
         <p>{getSettingName(index)} Option</p>

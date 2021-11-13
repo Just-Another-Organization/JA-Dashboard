@@ -1,7 +1,7 @@
 {
   "search": {
-    "searchProvider": "duckduck",
-    "searchOption": false
+    "searchProvider": "google",
+    "searchOption": true
   },
   "deepl": {
     "apiKey": ""

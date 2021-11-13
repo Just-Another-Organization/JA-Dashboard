@@ -7,12 +7,9 @@
 	import Header from '$lib/components/header/Header.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import SettingLookup from "$lib/components/SettingLookup/SettingLookup.svelte";
-	import {initStore} from "$store/store";
-
+	import {initStore} from "$store/setting.store";
 
 	initStore();
-
-
 </script>
 
 <ThemeWrapper themes={themes}>

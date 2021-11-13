@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { setting } from '$store/store';
+	import { setting } from '$store/setting.store';
 	import { onMount } from 'svelte';
-	import type { Config } from '$models/Config';
+	import type {Config} from '$models/Config';
 
 	const GOOGLE = 'google';
 	const DUCKDUCK = 'duckduck';
@@ -13,8 +13,8 @@
 
 	onMount(() => {
 		setting.subscribe((value: Config) => {
-			searchOption = value.searchOption;
-			const searchProvider = value.searchProvider || DEFAULT_PROVIDER;
+			searchOption = value.searchConfig?.searchOption;
+			const searchProvider = value.searchConfig?.searchProvider || DEFAULT_PROVIDER;
 			switch (searchProvider) {
 				case GOOGLE:
 					queryString = 'https://www.google.com/search?q=';

@@ -1,6 +1,7 @@
 <script context='module' lang='ts'>
 	export const prerender = true;
-	import Search from '$module/search-section/Search.svelte';
+	import Search from '$module/search-module/Search.svelte';
+	import JaGrid from "$lib/components/ja-grid/JaGrid.svelte";
 </script>
 
 
@@ -8,30 +9,16 @@
 	<title>JADashboard</title>
 </svelte:head>
 
-<section>
+<div class="wrapper">
 	<div class='search'>
 		<Search />
 	</div>
-	<!--<div class='shortcuts'>
-		<Shortcuts />
-	</div>
-	<div class='notes'>
-		<Notes />
-	</div>
-	<div class='gitlab'>
-		<GitLab />
-	</div>
-	<div class='deepl'>
-		<Deepl />
-	</div>
-	<div class='heatmap'>
-		<Heatmap />
-	</div>-->
-</section>
+	<JaGrid/>
+</div>
 
 
 <style>
-    section {
+    .wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
