@@ -25,9 +25,10 @@
 		"paths": {
 			"$lib": ["src/lib"],
 			"$lib/*": ["src/lib/*"],
+			"$ja-component/*": ["src/lib/components/ja-components/*"],
 			"$models/*": ["src/lib/models/*"],
 			"$module/*": ["src/lib/components/Modules/*"],
-			"$setting/*": ["src/lib/components/SettingLookup/SettingsDetails/*"],
+			"$setting/*": ["src/lib/components/setting-details/*"],
 			"$store/*": ["src/store/*"]
 		}
 	},

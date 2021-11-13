@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { setGitLabDomain, setGitLabPrivateToken, setGitLabUsername, setting } from '$store/store';
+	import { setting } from '$store/setting.store';
 	import { Config } from '$models/Config';
 
 	let settingValue: Config;
@@ -8,7 +8,7 @@
 		settingValue = value;
 	});
 
-	const updateGitLabPrivateToken = (value: string) => {
+	/*const updateGitLabPrivateToken = (value: string) => {
 		setGitLabPrivateToken(value);
 	};
 
@@ -18,12 +18,12 @@
 
 	const updateGitLabUsername = (value: string) => {
 		setGitLabUsername(value);
-	};
+	};*/
 </script>
 
 <div>
 
-	<div class='lookup-body'>
+<!--	<div class='lookup-body'>
 		<p class='settings-input-label'>PRIVATE-TOKEN</p>
 		<input class='settings-input' id='input-private-token' name='private-token'
 					 on:change='{(r) => updateGitLabPrivateToken(r.target.value)}' placeholder='No PRIVATE-TOKEN set'
@@ -39,6 +39,6 @@
 					 on:change='{(r) => updateGitLabUsername(r.target.value)}' placeholder='No Username set'
 					 type='text'
 					 value={settingValue.gitlabUsername}>
-	</div>
+	</div>-->
 </div>
 

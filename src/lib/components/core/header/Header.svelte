@@ -1,5 +1,5 @@
 <script>
-	import Sidebar from '$lib/components/header/Sidebar.svelte';
+	import Sidebar from '$lib/components/core/sidebar/Sidebar.svelte';
 	import { openSidebarAction } from '$store/ui.store';
 </script>
 

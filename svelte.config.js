@@ -22,9 +22,10 @@ const config = {
 			resolve: {
 				alias: {
 					'$lib': path.resolve('./src/lib'),
+					'$ja-component': path.resolve('./src/lib/components/ja-components'),
 					'$models': path.resolve('./src/lib/models'),
-					'$module': path.resolve('./src/lib/components/Modules'),
-					'$setting': path.resolve('./src/lib/components/SettingLookup/SettingsDetails'),
+					'$module': path.resolve('./src/lib/components/modules'),
+					'$setting': path.resolve('./src/lib/components/setting-details'),
 					'$store': path.resolve('./src/store'),
 				}
 			}

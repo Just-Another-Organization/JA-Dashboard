@@ -1,11 +1,11 @@
-<script>
-	import MyThemeToggle from '$lib/components/theme-toggle/MyThemeToggle.svelte';
+<script lang="ts">
+	import JaThemeToggle from "$ja-component/ja-theme-toggle/JaThemeToggle.svelte";
 </script>
 
 <footer class="footer">
 	<p class='void-box'></p>
 	<p>JustAnother &copy; 2021</p>
-	<MyThemeToggle />
+	<JaThemeToggle />
 </footer>
 
 <style>

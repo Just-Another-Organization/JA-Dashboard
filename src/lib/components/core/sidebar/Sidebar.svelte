@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar } from '$store/ui.store';
-	import { SIDEBAR } from '$lib/models/SIDEBAR';
+	import { SIDEBAR } from '$models/SIDEBAR';
 
 
 	let show = false;

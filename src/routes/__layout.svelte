@@ -4,11 +4,11 @@
 	import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css'
 	import '../app.css';
 
-	import Header from '$lib/components/header/Header.svelte';
-	import Footer from '$lib/components/footer/Footer.svelte';
-	import SettingLookup from "$lib/components/SettingLookup/SettingLookup.svelte";
-	import {initStore} from "$store/setting.store";
+	import Header from '$lib/components/core/header/Header.svelte';
+	import Footer from '$lib/components/core/footer/Footer.svelte';
+	import JaLookup from "$ja-component/ja-lookup/JaLookup.svelte";
 
+	import {initStore} from "$store/setting.store";
 	initStore();
 </script>
 
@@ -18,7 +18,7 @@
 		<slot />
 	</main>
 	<Footer />
-	<SettingLookup/>
+	<JaLookup/>
 </ThemeWrapper>
 
 <style>

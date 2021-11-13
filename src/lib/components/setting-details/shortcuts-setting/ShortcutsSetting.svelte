@@ -1,13 +1,13 @@
 <script lang='ts'>
-	import { setShortcuts, setting } from '$store/store';
-	import { Config } from '$lib/models/Config';
-	import type { Shortcut } from '$lib/models/Shortcut';
+	import {  setting } from '$store/setting.store';
+	import { Config, ShortcutConfig } from '$models/Config';
+
 
 	let settingValue: Config;
-	let shortcuts: Shortcut[];
-	let newShortcut: Shortcut;
+	let shortcuts: ShortcutConfig[];
+	let newShortcut: ShortcutConfig;
 
-	initNewShortcut();
+	/*initNewShortcut();
 	setting.subscribe(value => {
 		settingValue = value;
 		shortcuts = settingValue.shortcuts;
@@ -54,7 +54,7 @@
 
 	function isValidShortcut(shortcut: Shortcut): boolean {
 		return !!(shortcut.name && shortcut.icon && shortcut.url);
-	}
+	}*/
 
 </script>
 
@@ -63,10 +63,10 @@
 		<div id='manage-shortcuts'>
 			{#if shortcuts && shortcuts.length > 0}
 				{#each shortcuts as shortcut}
-					<div class='shortcut-item'
+				<!--	<div class='shortcut-item'
 							 on:click='{() => editShortcut(shortcut)}'>
 						{shortcut.name}
-					</div>
+					</div>-->
 				{/each}
 			{/if}
 		</div>
@@ -82,8 +82,8 @@
 						 name='shortcut-url'
 						 placeholder='Insert an url' type='text'>
 			<div>
-				<i class='fa fa-plus fa-2x add-button'
-					 on:click='{() => addShortcut(newShortcut)}'></i>
+				<!--<i class='fa fa-plus fa-2x add-button'
+					 on:click='{() => addShortcut(newShortcut)}'></i>-->
 			</div>
 		</div>
 	</div>

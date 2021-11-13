@@ -6,7 +6,7 @@
 	--theme-colors-background: #ffffff;
 	--theme-colors-background-contrast: #e3e3e3;
 	--theme-colors-background-accent: #a8a8a8;
-	--theme-colors-shadow: #00000026;
+	--theme-colors-shadow: #b70b0b;
 }
 
 body {
@@ -53,7 +53,7 @@ body::before {
 
 .lookup-header > p {
 	font-weight: 300;
-	font-size: 1.1rem;
+	font-size: 1rem;
 }
 
 .lookup-header > i {
@@ -62,6 +62,7 @@ body::before {
 
 .lookup-body {
 	display: flex;
+	align-items: center;
 	flex-direction: column;
 }
 

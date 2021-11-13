@@ -1,9 +1,8 @@
 <script context='module' lang='ts'>
-	export const prerender = true;
-	import Search from '$module/search-module/Search.svelte';
-	import JaGrid from "$lib/components/ja-grid/JaGrid.svelte";
+	export const prerender = false;
+	import Search from '$module/search/Search.svelte';
+	import JaGrid from "$ja-component/ja-grid/JaGrid.svelte";
 </script>
-
 
 <svelte:head>
 	<title>JADashboard</title>
