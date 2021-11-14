@@ -1,7 +1,6 @@
 import type {SearchConfig} from "$models/Config";
 
-
-// TODO for ZAPPABRODO change localhost with OTHER COSA
+// TODO DO SOMETHING GG
 const CONFIGURATOR_SERVICE_NAME = 'localhost';
 const CONFIGURATOR_PORT = '3001';
 const CONFIGURATOR_BASE_URL = 'http://' + CONFIGURATOR_SERVICE_NAME + ':' + CONFIGURATOR_PORT;

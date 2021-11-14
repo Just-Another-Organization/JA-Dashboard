@@ -8,13 +8,14 @@ export interface HomeGrid {
 
 export interface HomeRow {
   element: ComponentElement;
-  column: number
+  column: number;
 }
 
 export interface ComponentElement {
   component: MenuItems;
   componentOptions?: ComponentType;
-  columnNumber: number;
+  startColumn: number;
+  finalColumn: number;
 }
 
 export type ComponentType = SearchConfig | DeeplConfig | GitLabConfig | NoteConfig | ShortcutConfig;

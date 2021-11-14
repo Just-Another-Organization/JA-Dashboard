@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar } from '$store/ui.store';
-	import { SIDEBAR } from '$models/SIDEBAR';
-
+	import { Modules } from "$models/Modules.svelte";
 
 	let show = false;
 
@@ -26,9 +25,9 @@
 		</div>
 		<div>
 			<ul class='list'>
-				{#each SIDEBAR as item, i}
+				{#each Modules as item, i}
 					<li class='list-item pointer' on:click={() => openLookupHandler(i)}>
-						{item} Option
+						{item.name} Option
 					</li>
 				{/each}
 			</ul>
