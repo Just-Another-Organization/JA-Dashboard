@@ -1,4 +1,9 @@
 version: '3'
+
+networks:
+  ja_dashboard_network:
+    driver: bridge
+
 services:
   ja_dashboard:
     container_name: ja_dashboard
@@ -8,17 +13,20 @@ services:
       dockerfile: Dockerfile.dev
     env_file: .env
     links:
-      - ja_server
+      - ja_dashboard_configurator
     depends_on:
-      - ja_server
+      - ja_dashboard_configurator
     ports:
       - "${PORT}:3000"
       - "24678:24678"
     volumes:
       - .:/app/
       - /app/node_modules
-  ja_server:
-    container_name: ja_server
+    networks:
+      - ja_dashboard_network
+
+  ja_dashboard_configurator:
+    container_name: ja_dashboard_configurator
     image: vimagick/json-server
     restart: unless-stopped
     command: -H 0.0.0.0 -p 80 -w db.json
@@ -27,3 +35,5 @@ services:
       - "${SERVER_PORT}:80"
     volumes:
       - ./data:/data
+    networks:
+      - ja_dashboard_network

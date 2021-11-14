@@ -1,5 +1,4 @@
 import type {SearchConfig, DeeplConfig, GitLabConfig, NoteConfig, ShortcutConfig} from "$models/Config";
-import type {MenuItems} from "$models/MenuItems";
 
 
 export interface HomeGrid {
@@ -12,7 +11,7 @@ export interface HomeRow {
 }
 
 export interface ComponentElement {
-  component: MenuItems;
+  component: any;
   componentOptions?: ComponentType;
   startColumn: number;
   finalColumn: number;
