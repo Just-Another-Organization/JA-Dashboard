@@ -1,11 +1,7 @@
 <script lang="ts">
 
-  //Inline style
-  // Input() = column
-  // Input() = row
-  // Input() = elements = { ..., }
-
   // grid area = grid-row-start / grid-column-start / grid-row-end / grid-column-end.
+  // gird-area = 1 / 1 / 1 / 4
 
 </script>
 

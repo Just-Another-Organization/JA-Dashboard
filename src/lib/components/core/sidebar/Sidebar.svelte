@@ -1,18 +1,32 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { closeSidebarAction, openLookupAction, setLookupIndexAction, sidebar } from '$store/ui.store';
-	import { Modules } from "$models/Modules.svelte";
+	import {
+		addBreadcrumbItem,
+		closeSidebarAction,
+		lookupBreadcrumb,
+		openLookupAction,
+		setLookupIndexAction,
+		sidebar
+	} from '$store/ui.store';
+	import {ModuleInterface, Modules, ModuleType} from "$models/Modules.svelte";
 
 	let show = false;
+	let breadcrumb = [];
 
 	sidebar.subscribe(value => {
 		show = value;
 	})
 
-	function openLookupHandler(index: number){
-		setLookupIndexAction(index)
-		openLookupAction();
+	lookupBreadcrumb.subscribe(value => breadcrumb = value)
+
+	function openLookupHandler(index: number, item: ModuleInterface){
 		closeSidebarAction();
+		if (!breadcrumb.includes(item)){
+			addBreadcrumbItem(item)
+			setLookupIndexAction(index)
+			openLookupAction();
+		}
+
 	}
 
 </script>
@@ -26,9 +40,11 @@
 		<div>
 			<ul class='list'>
 				{#each Modules as item, i}
-					<li class='list-item pointer' on:click={() => openLookupHandler(i)}>
-						{item.name} Option
-					</li>
+					{#if item.type === ModuleType.PRIMARY}
+						<li class='list-item pointer' on:click={() => openLookupHandler(i, item)}>
+							{item.name} Option
+						</li>
+					{/if}
 				{/each}
 			</ul>
 		</div>

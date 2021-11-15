@@ -48,7 +48,7 @@ body::before {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 2rem;
+	padding: 0;
 }
 
 .lookup-header > p {
@@ -58,6 +58,7 @@ body::before {
 
 .lookup-header > i {
 	font-size: 1.2rem;
+	margin: 0 2rem 0 0;
 }
 
 .lookup-body {

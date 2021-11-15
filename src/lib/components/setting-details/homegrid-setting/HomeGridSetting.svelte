@@ -1,7 +1,7 @@
 <script lang="ts">
 
 
-  const row = [ 1];
+  const row = [ ];
 
 </script>
 
