@@ -16,7 +16,6 @@ export function closeSidebarAction(): void {
 }
 
 // Breadcrumb Action
-
 export function addBreadcrumbItem(item: ModuleInterface): void {
   lookupBreadcrumb.update(value => [...value, item])
 }
@@ -27,8 +26,6 @@ export function removeBreadcrumbItem(item: ModuleInterface): void {
 export function clearBreadcrumb(): void {
   lookupBreadcrumb.set( [] );
 }
-
-
 
 
 // Lookup Action

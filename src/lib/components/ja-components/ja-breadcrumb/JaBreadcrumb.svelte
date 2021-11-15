@@ -53,7 +53,7 @@
     <ul class="ja-breadcrumb">
       {#each breadcrumbItem as item, i }
         <li class="ja-breadcrumb-list">
-          <a class={lookupIndex !== Modules.indexOf(item) ? "ja-breadcrumb-item" : "ja-breadcrumb-item-active"} on:click={() => changeTab(item)}>
+          <a class={lookupIndex === Modules.indexOf(item) ? "ja-breadcrumb-item" : "ja-breadcrumb-item-active"} on:click={() => changeTab(item)}>
             {item.name}
             <i class="fas fa-times times-icon" on:click={() => removeTab(item)}></i>
           </a>
