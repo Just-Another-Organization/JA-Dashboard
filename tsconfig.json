@@ -27,7 +27,7 @@
 			"$lib/*": ["src/lib/*"],
 			"$ja-component/*": ["src/lib/components/ja-components/*"],
 			"$models/*": ["src/lib/models/*"],
-			"$module/*": ["src/lib/components/Modules/*"],
+			"$module/*": ["src/lib/components/modules/*"],
 			"$setting/*": ["src/lib/components/setting-details/*"],
 			"$store/*": ["src/store/*"]
 		}

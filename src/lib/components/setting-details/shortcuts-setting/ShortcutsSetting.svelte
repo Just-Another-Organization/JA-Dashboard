@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import {  setting } from '$store/setting.store';
+	import {  settingStore } from '$store/setting.store';
 	import { Config, ShortcutConfig } from '$models/Config';
 
 

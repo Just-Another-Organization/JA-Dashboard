@@ -1,67 +1,38 @@
 <script lang="ts">
-
-  import {onDestroy, onMount} from "svelte";
   import {
     clearBreadcrumb,
     closeLookupAction,
-    lookupBreadcrumb, lookupI,
-    removeBreadcrumbItem,
-    setLookupIndexAction
+    breadcrumbStore, removeBreadcrumbItem, changeBreadcrumbActiveItem,
   } from "$store/ui.store";
-  import type {ModuleInterface} from "$models/Modules.svelte";
-  import {Modules} from "$models/Modules.svelte";
-
-  let breadcrumbItem: ModuleInterface[] = [];
-  let lookupIndex: number;
-  let breadcrumbUnsubscribe;
-  let lookupIndexUnsubscribe;
-
-  onMount(() => {
-    breadcrumbUnsubscribe = lookupBreadcrumb.subscribe((value) => {
-      breadcrumbItem = value;
-    })
-
-    lookupIndexUnsubscribe = lookupI.subscribe(value => {
-      lookupIndex = value;
-    })
-
-  });
-
-  onDestroy(() => {
-    breadcrumbUnsubscribe();
-    lookupIndexUnsubscribe();
-  })
+  import type {ModuleInterface} from "$models/Module";
 
   function removeTab(item: ModuleInterface): void {
-    if (breadcrumbItem.length === 1){
+    if ($breadcrumbStore.tabs.length === 1){
       clearBreadcrumb();
       closeLookupAction();
     }else {
       removeBreadcrumbItem(item)
-      setLookupIndexAction(Modules.indexOf(breadcrumbItem[breadcrumbItem.length-1]))
     }
   }
 
-  function changeTab(item: ModuleInterface): void {
-    setLookupIndexAction(Modules.indexOf(item))
-  }
+
+
 
 </script>
 
 <div class="breadcrumb-wrap">
-  {#if breadcrumbItem.length > 0}
+  {#if $breadcrumbStore.tabs.length > 0}
     <ul class="ja-breadcrumb">
-      {#each breadcrumbItem as item, i }
+      {#each $breadcrumbStore.tabs as item, i }
         <li class="ja-breadcrumb-list">
-          <a class={lookupIndex === Modules.indexOf(item) ? "ja-breadcrumb-item" : "ja-breadcrumb-item-active"} on:click={() => changeTab(item)}>
-            {item.name}
+          <a class={item.name === $breadcrumbStore.activeTab ? "ja-breadcrumb-item" : "ja-breadcrumb-item-active"} on:click={changeBreadcrumbActiveItem(item)}>
+            {item.label}
             <i class="fas fa-times times-icon" on:click={() => removeTab(item)}></i>
           </a>
         </li>
       {/each}
     </ul>
   {/if}
-
 </div>
 
 <style>

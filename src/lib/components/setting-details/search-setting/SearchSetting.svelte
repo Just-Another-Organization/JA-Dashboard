@@ -2,13 +2,13 @@
   import {SearchConfig} from "$models/Config";
   import {onDestroy, onMount} from "svelte";
   import type {Unsubscriber} from "svelte/store";
-  import {searchEffect, setting} from "$store/setting.store";
+  import {searchEffect, settingStore} from "$store/setting.store";
 
   let searchConfig: SearchConfig;
   let observable: Unsubscriber;
 
   onMount(() => {
-    observable = setting.subscribe(value => {
+    observable = settingStore.subscribe(value => {
       searchConfig = value.searchConfig;
     })
   })

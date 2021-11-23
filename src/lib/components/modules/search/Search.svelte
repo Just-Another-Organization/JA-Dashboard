@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setting } from '$store/setting.store';
+	import { settingStore } from '$store/setting.store';
 	import { onMount } from 'svelte';
 	import type {Config} from '$models/Config';
 
@@ -12,7 +12,7 @@
 	let searchOption: boolean;
 
 	onMount(() => {
-		setting.subscribe((value: Config) => {
+		settingStore.subscribe((value: Config) => {
 			searchOption = value.searchConfig?.searchOption;
 			const searchProvider = value.searchConfig?.searchProvider || DEFAULT_PROVIDER;
 			switch (searchProvider) {

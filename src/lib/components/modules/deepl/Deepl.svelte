@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { setting } from '$store/setting.store';
+	import { settingStore } from '$store/setting.store';
 	import type { Config } from '$models/Config';
 	import { onMount } from 'svelte';
 	import { Language } from '$models/Language';
@@ -50,7 +50,7 @@
 	}
 
 	onMount(() => {
-		setting.subscribe((value: Config) => {
+		settingStore.subscribe((value: Config) => {
 			deeplApiKey = value.deeplApiKey;
 			if (deeplApiKey) {
 				getAvailableSourceLanguages()

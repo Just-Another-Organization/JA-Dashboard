@@ -1,13 +1,16 @@
 <script lang="ts">
 
-
   const row = [ ];
+
+  function openNewRow():void {
+
+  }
 
 </script>
 
 <div class="lookup-body">
   {#if row.length === 0}
-    <i class="fa fa-plus-circle add-row-button"></i>
+    <i class="fa fa-plus-circle add-row-button" on:click={openNewRow}></i>
 
   {:else if row.length !== 0}
     {#each row as r}

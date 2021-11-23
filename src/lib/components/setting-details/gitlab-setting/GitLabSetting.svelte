@@ -1,10 +1,10 @@
 <script lang='ts'>
-	import { setting } from '$store/setting.store';
+	import { settingStore } from '$store/setting.store';
 	import { Config } from '$models/Config';
 
 	let settingValue: Config;
 
-	setting.subscribe(value => {
+	settingStore.subscribe(value => {
 		settingValue = value;
 	});
 

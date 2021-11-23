@@ -1,37 +1,22 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import {
-		addBreadcrumbItem,
-		closeSidebarAction,
-		lookupBreadcrumb,
-		openLookupAction,
-		setLookupIndexAction,
-		sidebar
-	} from '$store/ui.store';
-	import {ModuleInterface, Modules, ModuleType} from "$models/Modules.svelte";
+	import { addBreadcrumbItem, closeSidebarAction, breadcrumbStore, openLookupAction, sidebarStore } from '$store/ui.store';
+	import type {ModuleInterface} from "$models/Module";
+	import { Modules as modules } from "$models/Modules.svelte";
+	import {ModuleType} from "$models/Module";
 
-	let show = false;
-	let breadcrumb = [];
 
-	sidebar.subscribe(value => {
-		show = value;
-	})
-
-	lookupBreadcrumb.subscribe(value => breadcrumb = value)
-
-	function openLookupHandler(index: number, item: ModuleInterface){
+	function openLookupHandler(item: ModuleInterface){
 		closeSidebarAction();
-		if (!breadcrumb.includes(item)){
+		if (!$breadcrumbStore.tabs.includes(item)){
 			addBreadcrumbItem(item)
-			setLookupIndexAction(index)
 			openLookupAction();
 		}
-
 	}
 
 </script>
 
-{#if show}
+{#if $sidebarStore}
 	<nav transition:fly={{x: -250, opacity: 1}}>
 		<div class='side-header'>
 			<p class='side-header-text'>Setting</p>
@@ -39,10 +24,10 @@
 		</div>
 		<div>
 			<ul class='list'>
-				{#each Modules as item, i}
+				{#each modules as item}
 					{#if item.type === ModuleType.PRIMARY}
-						<li class='list-item pointer' on:click={() => openLookupHandler(i, item)}>
-							{item.name} Option
+						<li class='list-item pointer' on:click={() => openLookupHandler(item)}>
+							{item.label} Settings
 						</li>
 					{/if}
 				{/each}

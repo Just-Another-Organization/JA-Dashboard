@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import { setting } from '$store/setting.store';
+	import { settingStore } from '$store/setting.store';
 	import type { Config } from '$lib/models/Config';
 	import { onMount } from 'svelte';
 	import type { Shortcut } from '$lib/models/Shortcut';
@@ -7,7 +7,7 @@
 	let shortcuts: Shortcut[] = [];
 
 	onMount(() => {
-		setting.subscribe((value: Config) => {
+		settingStore.subscribe((value: Config) => {
 			shortcuts = value.shortcuts;
 		});
 	});

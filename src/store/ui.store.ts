@@ -1,42 +1,56 @@
 import {writable} from "svelte/store";
-import type {ModuleInterface} from "$models/Modules.svelte";
+import type {ModuleInterface} from "$models/Module";
 
-export const sidebar = writable(false);
+interface breadcrumbStore {
+  tabs: ModuleInterface[];
+  activeTab: string;
+}
 
-export const lookupV = writable(false);
-export const lookupI = writable(-1);
-export const lookupBreadcrumb = writable<ModuleInterface[]>( [] )
+export const sidebarStore = writable(false);
+export const lookupStore = writable(false);
+export const breadcrumbStore = writable<breadcrumbStore>( {tabs: [], activeTab: ''} )
 
 // Sidebar Action
 export function openSidebarAction(): void {
-  sidebar.update(value => value = true);
+  sidebarStore.update(value => value = true);
 }
 export function closeSidebarAction(): void {
-  sidebar.update(value => value = false);
+  sidebarStore.update(value => value = false);
 }
-
-// Breadcrumb Action
-export function addBreadcrumbItem(item: ModuleInterface): void {
-  lookupBreadcrumb.update(value => [...value, item])
-}
-export function removeBreadcrumbItem(item: ModuleInterface): void {
-  lookupBreadcrumb.update(value => value.filter((tab: ModuleInterface) => tab != item))
-}
-
-export function clearBreadcrumb(): void {
-  lookupBreadcrumb.set( [] );
-}
-
 
 // Lookup Action
 export function openLookupAction(): void {
-  lookupV.update( value => value = true);
+  lookupStore.update(value => value = true);
 }
 export function closeLookupAction(): void {
-  lookupV.update( value => value = false);
+  lookupStore.update(value => value = false);
 }
-export function setLookupIndexAction(index: number): void {
-  lookupI.update( value => value = index);
+
+// Breadcrumb Action
+export function addBreadcrumbItem(tab: ModuleInterface): void {
+  breadcrumbStore.update(({tabs}) =>{
+    return {tabs: [...tabs, tab], activeTab: tab.name};
+  })
 }
+export function removeBreadcrumbItem(tab: ModuleInterface): void {
+  breadcrumbStore.update(({tabs, activeTab}) => {
+    const filtredTabs: ModuleInterface[] = tabs.filter((responseTab: ModuleInterface) => responseTab != tab);
+    const newActiveTab = tabs[tabs.length-2].name;
+    return {tabs: filtredTabs, activeTab: newActiveTab};
+  })
+}
+
+export function changeBreadcrumbActiveItem(tab: ModuleInterface): void {
+  breadcrumbStore.update( ({tabs, activeTab})=> {
+    return {tabs: tabs, activeTab: tab.name}
+  })
+}
+
+export function clearBreadcrumb(): void {
+  breadcrumbStore.set({tabs: [], activeTab: ''} );
+}
+
+
+
 
 
