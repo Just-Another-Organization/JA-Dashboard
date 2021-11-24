@@ -1,56 +1,49 @@
 <script lang="ts">
-	import { settingStore } from '$store/setting.store';
-	import { onMount } from 'svelte';
-	import type {Config} from '$models/Config';
+	import {settingStore} from "$store/setting.store";
 
 	const GOOGLE = 'google';
 	const DUCKDUCK = 'duckduck';
-	const DEFAULT_PROVIDER = GOOGLE;
 
-	let queryString: string;
 	let searchString: string;
-	let searchOption: boolean;
 
-	onMount(() => {
-		settingStore.subscribe((value: Config) => {
-			searchOption = value.searchConfig?.searchOption;
-			const searchProvider = value.searchConfig?.searchProvider || DEFAULT_PROVIDER;
-			switch (searchProvider) {
-				case GOOGLE:
-					queryString = 'https://www.google.com/search?q=';
-					break;
-				case DUCKDUCK:
-					queryString = 'https://duckduckgo.com/?q=';
-					break;
-			}
-		});
-	})
+
+	function setProvider(): string {
+		switch ($settingStore.searchConfig.searchProvider) {
+			case GOOGLE:
+				return 'https://www.google.com/search?q=';
+			case DUCKDUCK:
+				return  'https://duckduckgo.com/?q=';
+			default:
+				return 'https://www.google.com/search?q=';
+		}
+	}
 
 	function onSearchEnter(e) {
-		const searchText:string = queryString + searchString;
+		const searchText: string = setProvider() + searchString;
 		if (e.charCode === 13 && searchString.trim() != '') {
 			search(searchText);
 		}
 	}
 
 	function onSearchButton() {
-		const searchText:string = queryString + searchString;
+		setProvider();
+		const searchText: string = setProvider() + searchString;
 		if( searchString.trim() != ''){
 			search(searchText);
 		}
 	}
 
 	function search(text: string) {
-	  if (searchOption === true){
+	  if ($settingStore.searchConfig?.searchOption === true){
 			window.location.replace(text)
-		} else if (searchOption === false) {
+		} else if ($settingStore.searchConfig?.searchOption === false) {
 			window.open(text)
 		}
 	}
 
 </script>
 
-<section>
+<div>
 	<input
 		class='search-box'
 		type='text'
@@ -59,7 +52,7 @@
 		on:keypress={onSearchEnter}
 	>
 	<i class="fas fa-chevron-right search-arrow pointer" on:click={onSearchButton}></i>
-</section>
+</div>
 
 
 <style>

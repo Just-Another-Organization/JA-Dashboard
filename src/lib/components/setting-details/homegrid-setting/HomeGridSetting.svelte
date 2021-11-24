@@ -1,9 +1,18 @@
 <script lang="ts">
 
+  import {Modules as modules} from "$models/Modules.svelte";
+  import type {ModuleInterface} from "$models/Module";
+  import {addBreadcrumbItem, breadcrumbStore, changeBreadcrumbActiveItem} from "$store/ui.store";
+
   const row = [ ];
 
-  function openNewRow():void {
-
+  function openNewRow() :void {
+    const rowModule = modules.filter( (response: ModuleInterface) => response.name === 'home_grid_row')[0];
+    if (!$breadcrumbStore.tabs.includes(rowModule)){
+      addBreadcrumbItem(rowModule);
+    }else {
+      changeBreadcrumbActiveItem(rowModule)
+    }
   }
 
 </script>

@@ -1,28 +1,20 @@
 <script lang='ts'>
 
-  import {  settingStore } from '$store/setting.store';
-  import { Config } from '$models/Config';
+  import {deeplEffect, settingStore} from "$store/setting.store";
 
-  let settingValue: Config;
-
-  settingStore.subscribe(value => {
-    settingValue = value;
-  });
-
- /* const updateDeeplApiKey = (value: string) => {
-    setDeeplApiKey(value);
-  };*/
+  function updateDeeplApiKey(value: string) {
+    deeplEffect({deeplApiKey: value});
+  }
 </script>
 
 <div>
-  <!--<div class='lookup-body'>
+  <div class='lookup-body'>
     <p class='settings-input-label'>API-KEY</p>
     <input class='settings-input'
-           name='api-key'
-           on:change='{(r) => updateDeeplApiKey(r.target.value)}'
+           on:change={(r) => updateDeeplApiKey(r.target.value)}
            type='text'
            placeholder='No API-KEY set'
-           value={settingValue.deeplApiKey}>
-  </div>-->
+           value={$settingStore.deeplConfig.deeplApiKey || ''}>
+  </div>
 </div>
 

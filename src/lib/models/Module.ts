@@ -6,6 +6,7 @@ export enum ModuleType {
 export interface ModuleInterface {
   name: string;
   label: string;
-  settingComponent: any;
+  settingComponent?: any;
+  component?: any;
   type: ModuleType;
 }
