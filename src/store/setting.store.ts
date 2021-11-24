@@ -1,14 +1,15 @@
 import { writable } from 'svelte/store';
-import type {Config, DeeplConfig, SearchConfig} from '$models/Config';
+import type {Config, DeeplConfig, NoteConfig, SearchConfig} from '$models/Config';
 import {getSearchConfig, setSearchConfig} from "$lib/services/search.service";
 import {getDeeplConfig, setDeeplConfig} from "$lib/services/deepl.service";
+import {getNotes, setNotes} from "$lib/services/note.service";
 
 
 export const settingStore = writable<Config>({
 	searchConfig: undefined,
 	deeplConfig: undefined,
 	gitLabConfig: [],
-	notesConfig: [],
+	notesConfig: undefined,
 	shortcuts: []
 });
 
@@ -35,6 +36,15 @@ export function deeplEffect(config: DeeplConfig): void {
 	});
 }
 
+export function notesEffect(note: NoteConfig): void {
+	setNotes(note).then( () => {
+		settingStore.update( (setting) => {
+			setting.notesConfig = note;
+			return setting;
+		})
+	})
+}
+
 
 /*-- INIT (GET FROM DB AND SET STORAGE)  --*/
 function initSetting() {
@@ -48,6 +58,13 @@ function initSetting() {
 	getDeeplConfig().then( (res) => {
 		settingStore.update( (setting) => {
 			setting.deeplConfig = res;
+			return setting;
+		})
+	})
+
+	getNotes().then( (res) => {
+		settingStore.update( (setting) => {
+			setting.notesConfig = res;
 			return setting;
 		})
 	})

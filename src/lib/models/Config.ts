@@ -2,7 +2,7 @@ export interface Config {
   searchConfig: SearchConfig;
   deeplConfig: DeeplConfig
   gitLabConfig: GitLabConfig[];
-  notesConfig: NoteConfig[];
+  notesConfig: NoteConfig;
   shortcuts: ShortcutConfig[];
 }
 
@@ -23,7 +23,6 @@ export interface GitLabConfig {
 }
 
 export interface NoteConfig {
-  id: string;
   note: string;
 }
 

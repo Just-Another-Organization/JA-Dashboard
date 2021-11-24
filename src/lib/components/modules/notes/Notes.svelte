@@ -1,28 +1,12 @@
 <script lang='ts'>
-	import { setNotes, setting } from '$store/store';
-	import type { Config } from '$models/Config';
-	import { onMount } from 'svelte';
-
-	let notes = '';
-	onMount(() => {
-		setting.subscribe((value: Config) => {
-			notes = value.notes;
-		});
-	});
-
-	const updateNotes = (value: string) => {
-		setNotes(value);
-	};
+	import {notesEffect, settingStore} from "$store/setting.store";
 </script>
 
 <section>
 	<div class='component-wrapper'>
-		<div id='heading'>
-			<p>Notes</p>
-		</div>
 		<div id='content-area'>
-			<textarea id='notes-area' on:change='{(r) => updateNotes(r.target.value)}' type='text'
-								value={notes || 'Write down some notes'}
+			<textarea id='notes-area' on:change='{(r) => notesEffect(r.target.value)}'
+								value={$settingStore.notesConfig || 'Write down some notes'}
 			></textarea>
 		</div>
 	</div>
@@ -31,10 +15,6 @@
 <style>
     .component-wrapper {
         padding: 0.8rem;
-    }
-
-    #heading {
-        text-align: center;
     }
 
     #notes-area {
