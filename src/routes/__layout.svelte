@@ -9,6 +9,7 @@
 	import JaLookup from "$ja-component/ja-lookup/JaLookup.svelte";
 
 	import {initStore} from "$store/setting.store";
+	import JaModal from "$ja-component/ja-modal/JaModal.svelte";
 	initStore();
 </script>
 
@@ -19,6 +20,7 @@
 	</main>
 	<Footer />
 	<JaLookup/>
+	<JaModal />
 </ThemeWrapper>
 
 <style>

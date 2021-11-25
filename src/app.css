@@ -37,7 +37,7 @@ body::before {
 	bottom: 0;
 	transform: translate(-50%, 0%);
 	margin: 0 auto;
-	z-index: 9999;
+	z-index: 1000;
 	width: 80%;
 	height: 30rem;
 	background-color: var(--theme-colors-background-accent);
@@ -89,4 +89,52 @@ body::before {
 	outline: none;
 }
 
+.settings-dropdown {
+	align-self: center;
+	max-width: 30rem;
+	min-width: 2rem;
+	padding: .4rem;
+	margin: 0 0 1rem 0;
+	font-size: 1.1rem;
+	font-weight: 300;
+	border-width: 0 0 1px 0;
+	background-color: #FFFFFF00;
+}
+
+.settings-dropdown:focus {
+	outline: none;
+}
+
+.ja-modal {
+	width: 40rem;
+	height: 20rem;
+	z-index: 1001;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0 auto;
+	background-color: var(--theme-colors-background);
+	border: 1px solid var(--theme-colors-shadow);
+	border-radius: 15px;
+	color: var(--theme-colors-text);
+}
+
+.ja-modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	padding: 0 1rem;
+}
+
+.ja-modal-header-label {
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+.ja-modal-header-icon {
+	font-size: 1rem;
+	cursor: pointer;
+}
 

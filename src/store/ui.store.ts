@@ -9,6 +9,7 @@ interface breadcrumbStore {
 export const sidebarStore = writable(false);
 export const lookupStore = writable(false);
 export const breadcrumbStore = writable<breadcrumbStore>( {tabs: [], activeTab: ''} )
+export const modalStore = writable(false);
 
 // Sidebar Action
 export function openSidebarAction(): void {
@@ -49,6 +50,16 @@ export function changeBreadcrumbActiveItem(tab: ModuleInterface): void {
 export function clearBreadcrumb(): void {
   breadcrumbStore.set({tabs: [], activeTab: ''} );
 }
+
+// Modal action
+
+export function openModalAction(): void {
+  modalStore.update(value => value = true);
+}
+export function closeModalAction(): void {
+  modalStore.update(value => value = false);
+}
+
 
 
 
