@@ -17,18 +17,21 @@
       name: "home_gird",
       label: "Home",
       settingComponent: HomeGridSetting,
+      component: null,
       type: ModuleType.PRIMARY
     },
     {
       name: "home_grid_row",
       label: "Home Grid Row",
       settingComponent: HomeGridSettingDetails,
+      component: null,
       type: ModuleType.SUB
     },
     {
       name: 'search',
       label: "Search",
       settingComponent: SearchSetting,
+      component: null,
       type: ModuleType.PRIMARY
     },
     {

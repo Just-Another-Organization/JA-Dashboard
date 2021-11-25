@@ -6,8 +6,9 @@ export interface HomeGrid {
 }
 
 export interface HomeRow {
-  element: ComponentElement;
-  column: number;
+  id: number;
+  element: ComponentElement | undefined;
+  column: number | undefined;
 }
 
 export interface ComponentElement {

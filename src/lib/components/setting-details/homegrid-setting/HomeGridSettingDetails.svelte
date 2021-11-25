@@ -1,10 +1,8 @@
 <script lang="ts">
 
-
-  import {closeModalAction, openModalAction} from "$store/ui.store";
+  import {openModalAction} from "$store/ui.store";
 
   let row = [{id: 1}];
-
 
   function changeRowSize(rowSize: number) {
     row = []

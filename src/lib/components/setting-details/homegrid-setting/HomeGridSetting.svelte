@@ -3,13 +3,13 @@
   import {Modules as modules} from "$models/Modules.svelte";
   import type {ModuleInterface} from "$models/Module";
   import {addBreadcrumbItem, breadcrumbStore, changeBreadcrumbActiveItem} from "$store/ui.store";
-
-  const row = [ ];
+  import {addNewRow, homegridStore, removeRow} from "$store/homegrid.store";
 
   function openNewRow() :void {
     const rowModule = modules.filter( (response: ModuleInterface) => response.name === 'home_grid_row')[0];
     if (!$breadcrumbStore.tabs.includes(rowModule)){
       addBreadcrumbItem(rowModule);
+      addNewRow();
     }else {
       changeBreadcrumbActiveItem(rowModule)
     }
@@ -18,16 +18,14 @@
 </script>
 
 <div class="lookup-body">
-  {#if row.length === 0}
-    <i class="fa fa-plus-circle add-row-button" on:click={openNewRow}></i>
-
-  {:else if row.length !== 0}
-    {#each row as r}
+  <i class="fa fa-plus-circle add-row-button" on:click={openNewRow}></i>
+  {#if $homegridStore.rows.length !== 0}
+    {#each $homegridStore.rows as row}
       <div class="row-wrapper">
         <div class="template-row">
-          {r}
+          {row.id}
         </div>
-        <i class="fa fa-minus-circle remove-row-button"></i>
+        <i class="fa fa-minus-circle remove-row-button" on:click={() => removeRow(row.id)}></i>
         <i class="fa fa-pen remove-row-button"></i>
       </div>
     {/each}
@@ -37,8 +35,10 @@
 <style>
 
   .add-row-button {
+    margin: 1rem 0;
     font-size: 1.4rem;
     color: var(--theme-colors-text);
+
   }
   .add-row-button:hover {
     color: #e0e0e0;
@@ -48,6 +48,7 @@
     font-size: 1.4rem;
     color: var(--theme-colors-text);
     margin: 0 0 0 1rem;
+    cursor: pointer;
   }
   .remove-row-button:hover {
     color: #e0e0e0;
