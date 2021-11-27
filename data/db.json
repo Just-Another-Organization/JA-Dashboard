@@ -17,5 +17,21 @@
     {
       "note": ""
     }
-  ]
+  ],
+  "home": {
+    "rows": [
+      {
+        "id": 2,
+        "elements": []
+      },
+      {
+        "id": 3,
+        "elements": []
+      },
+      {
+        "id": 4,
+        "elements": []
+      }
+    ]
+  }
 }

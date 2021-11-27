@@ -6,16 +6,16 @@ export interface HomeGrid {
 }
 
 export interface HomeRow {
-  id: number;
-  element: ComponentElement | undefined;
-  column: number | undefined;
+  id?: number;
+  elements?: ComponentElement[];
 }
 
 export interface ComponentElement {
-  component: any;
+  id?: number;
+  component?: any;
   componentOptions?: ComponentType;
-  startColumn: number;
-  finalColumn: number;
+  startColumn?: number;
+  finalColumn?: number;
 }
 
 export type ComponentType = SearchConfig | DeeplConfig | GitLabConfig | NoteConfig | ShortcutConfig;

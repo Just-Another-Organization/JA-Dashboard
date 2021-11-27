@@ -1,23 +1,28 @@
 <script lang="ts">
 
   import {openModalAction} from "$store/ui.store";
+  import {editRowAction, editRowStore, homegridStore} from "$store/homegrid.store";
+  import {ComponentElement, HomeRow} from "$models/HomeGrid";
 
-  let row = [{id: 1}];
 
-  function changeRowSize(rowSize: number) {
-    row = []
-    for (let i = 0; i < rowSize; ++i){
-      row.push({id: i+1})
+  function changeRowSize(rowSize: number){
+    const elements: ComponentElement[] = [];
+    for (let i = 0; i < rowSize; ++i) {
+      elements.push({id: i});
     }
+    editRowAction({id: $editRowStore.id,elements: elements})
   }
 
 
 </script>
 
 <div class="lookup-body">
+
+  <p>{$editRowStore.id}</p>
+
   <div class="row-wrapper">
     <label class="settings-input-label" for="column">Row Size</label>
-    <select class="settings-dropdown" name="column" id="column" on:change={(r) => changeRowSize(r.target.value)}>
+    <select class="settings-dropdown" name="column" id="column" value={$editRowStore.elements.length.toString()} on:change={(r) => changeRowSize(r.target.value)}>
       <option value=1>1</option>
       <option value=2>2</option>
       <option value=3>3</option>
@@ -35,7 +40,7 @@
 
 
   <div class="row">
-    {#each row as item, i}
+    {#each $homegridStore.rows[$editRowStore.id].elements as item, i}
       <div class="row-block">
         <span class="block" on:click={openModalAction}><i class="fa fa-plus"></i></span>
       </div>

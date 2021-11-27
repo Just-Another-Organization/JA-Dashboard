@@ -3,6 +3,8 @@ import type {Config, DeeplConfig, NoteConfig, SearchConfig} from '$models/Config
 import {getSearchConfig, setSearchConfig} from "$lib/services/search.service";
 import {getDeeplConfig, setDeeplConfig} from "$lib/services/deepl.service";
 import {getNotes, setNotes} from "$lib/services/note.service";
+import {getHome} from "$lib/services/home.service";
+import {homegridStore} from "$store/homegrid.store";
 
 
 export const settingStore = writable<Config>({
@@ -66,6 +68,13 @@ function initSetting() {
 		settingStore.update( (setting) => {
 			setting.notesConfig = res;
 			return setting;
+		})
+	})
+
+	getHome().then( (res) => {
+		homegridStore.update( (home) => {
+			home = res;
+			return home;
 		})
 	})
 }
